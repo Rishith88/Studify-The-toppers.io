@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)file:///C:/Users/ganes/Downloads/index_4.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studify — Study Smarter, Pay Less</title>
+<link href="./Studify — Study Smarter, Pay Less_files/css2" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#020817;--glass:rgba(255,255,255,0.04);--glass-border:rgba(255,255,255,0.08);
+  --glass-hover:rgba(255,255,255,0.07);--blue:#3b82f6;--blue2:#60a5fa;
+  --cyan:#06b6d4;--purple:#8b5cf6;--gold:#f59e0b;--white:#f8fafc;
+  --muted:#94a3b8;--muted2:#64748b;--green:#10b981;--red:#ef4444;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;line-height:1.6}
+.bg-orbs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(130px);opacity:0.15}
+.orb1{width:700px;height:700px;background:radial-gradient(circle,#3b82f6,transparent);top:-200px;left:-200px}
+.orb2{width:500px;height:500px;background:radial-gradient(circle,#8b5cf6,transparent);top:40%;right:-150px}
+.orb3{width:400px;height:400px;background:radial-gradient(circle,#06b6d4,transparent);bottom:-100px;left:30%}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5%;background:rgba(2,8,23,0.75);backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border)}
+.logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,#fff,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;cursor:pointer}
+.nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.85rem;font-weight:500;transition:color 0.2s;cursor:pointer}
+.nav-links a:hover{color:var(--white)}
+.nav-btn{background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff !important;padding:0.5rem 1.4rem;border-radius:8px;font-weight:600 !important;font-size:0.85rem !important;box-shadow:0 4px 20px rgba(59,130,246,0.3)}
+
+/* PAGES */
+.page{display:none;position:relative;z-index:2}
+.page.active{display:block}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 5% 5rem}
+.hero-pill{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);color:var(--blue2);font-size:0.75rem;font-weight:600;padding:0.4rem 1.1rem;border-radius:50px;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:2rem;animation:up 0.7s ease both}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,8vw,6rem);font-weight:800;line-height:1.05;letter-spacing:-2px;margin-bottom:1.5rem;animation:up 0.7s ease 0.1s both}
+.grad{background:linear-gradient(135deg,#60a5fa,#a78bfa,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:1.05rem;color:var(--muted);max-width:540px;line-height:1.8;margin-bottom:2.5rem;animation:up 0.7s ease 0.2s both}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;animation:up 0.7s ease 0.3s both;margin-bottom:4rem}
+.btn-grad{background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;padding:0.9rem 2.2rem;border-radius:10px;font-size:0.95rem;font-weight:600;text-decoration:none;border:none;cursor:pointer;box-shadow:0 8px 30px rgba(59,130,246,0.35);transition:transform 0.2s,box-shadow 0.2s;display:inline-block}
+.btn-grad:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(59,130,246,0.5)}
+.btn-ghost{background:var(--glass);border:1px solid var(--glass-border);color:var(--white);padding:0.9rem 2.2rem;border-radius:10px;font-size:0.95rem;font-weight:600;text-decoration:none;cursor:pointer;backdrop-filter:blur(10px);transition:border-color 0.2s;display:inline-block}
+.btn-ghost:hover{border-color:rgba(59,130,246,0.4)}
+.stats-row{display:flex;gap:3rem;flex-wrap:wrap;justify-content:center;animation:up 0.7s ease 0.4s both}
+.stat-n{font-family:'Playfair Display',serif;font-size:2rem;font-weight:800;background:linear-gradient(135deg,#fff,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-l{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+
+/* SECTIONS */
+.sec{padding:5rem 5%;position:relative;z-index:2}
+.sec-eyebrow{font-size:0.72rem;text-transform:uppercase;letter-spacing:2px;color:var(--blue2);font-weight:700;margin-bottom:0.6rem}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-1px;margin-bottom:0.7rem}
+.sec-sub{color:var(--muted);font-size:0.95rem;max-width:500px;line-height:1.8;margin-bottom:3rem}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent);margin:0 5%}
+
+/* TABS */
+.tabs{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.tab{background:var(--glass);border:1px solid var(--glass-border);color:var(--muted);padding:0.45rem 1.1rem;border-radius:50px;font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;backdrop-filter:blur(10px)}
+.tab:hover,.tab.active{background:rgba(59,130,246,0.15);border-color:rgba(59,130,246,0.4);color:var(--blue2)}
+
+/* CATEGORY GRID */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+.cat-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:1.8rem;cursor:pointer;backdrop-filter:blur(20px);transition:all 0.3s;position:relative;overflow:hidden}
+.cat-card::after{content:'View Details →';position:absolute;bottom:1.2rem;right:1.2rem;font-size:0.72rem;font-weight:700;color:var(--blue2);opacity:0;transition:opacity 0.3s}
+.cat-card:hover{background:var(--glass-hover);border-color:rgba(59,130,246,0.4);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,0.4)}
+.cat-card:hover::after{opacity:1}
+.cat-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1rem}
+.cat-icon{font-size:2rem;line-height:1}
+.cat-badge{font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding:0.25rem 0.6rem;border-radius:4px}
+.badge-int{background:rgba(6,182,212,0.15);color:#06b6d4;border:1px solid rgba(6,182,212,0.2)}
+.badge-ind{background:rgba(245,158,11,0.15);color:#f59e0b;border:1px solid rgba(245,158,11,0.2)}
+.badge-oly{background:rgba(139,92,246,0.15);color:#a78bfa;border:1px solid rgba(139,92,246,0.2)}
+.badge-sch{background:rgba(34,197,94,0.15);color:#4ade80;border:1px solid rgba(34,197,94,0.2)}
+.cat-name{font-size:1rem;font-weight:700;margin-bottom:0.35rem;line-height:1.3}
+.cat-desc{font-size:0.8rem;color:var(--muted);line-height:1.6;margin-bottom:1rem}
+.cat-exams{display:flex;flex-wrap:wrap;gap:0.4rem}
+.exam-chip{font-size:0.65rem;font-weight:600;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--muted);padding:0.2rem 0.6rem;border-radius:4px}
+
+/* DOCS */
+.docs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem}
+.doc-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:1.5rem;backdrop-filter:blur(20px);transition:all 0.3s;display:flex;flex-direction:column}
+.doc-card:hover{background:var(--glass-hover);border-color:rgba(59,130,246,0.3);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.4)}
+.doc-label{display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding:0.25rem 0.7rem;border-radius:4px;margin-bottom:0.9rem;background:rgba(59,130,246,0.15);color:var(--blue2);border:1px solid rgba(59,130,246,0.2)}
+.doc-stars{color:var(--gold);font-size:0.75rem;margin-bottom:0.4rem}
+.doc-title{font-size:0.92rem;font-weight:700;line-height:1.4;margin-bottom:0.4rem}
+.doc-meta{font-size:0.75rem;color:var(--muted2);margin-bottom:auto;padding-bottom:1.2rem}
+.doc-footer{display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid var(--glass-border)}
+.doc-price{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:800;color:var(--gold)}
+.doc-price small{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.68rem;color:var(--muted2);font-weight:400}
+.rent-btn{background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;border:none;padding:0.45rem 1.1rem;border-radius:7px;font-size:0.78rem;font-weight:600;cursor:pointer;transition:opacity 0.2s}
+.rent-btn:hover{opacity:0.85}
+
+/* PRICING */
+.pricing-wrap{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center}
+.price-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;padding:2.5rem 2rem;width:290px;text-align:center;backdrop-filter:blur(20px);transition:all 0.3s;position:relative}
+.price-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,0.4)}
+.price-card.pop{border-color:rgba(59,130,246,0.4);box-shadow:0 0 60px rgba(59,130,246,0.15)}
+.pop-label{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;font-size:0.68rem;font-weight:700;padding:0.3rem 1.1rem;border-radius:50px;text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap}
+.price-name{font-size:0.72rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted);font-weight:700;margin-bottom:1.2rem}
+.price-val{font-family:'Playfair Display',serif;font-size:3.2rem;font-weight:800;line-height:1}
+.price-val sup{font-size:1.3rem;vertical-align:super}
+.price-per{font-size:0.78rem;color:var(--muted2);margin-bottom:2rem;margin-top:0.3rem}
+.price-list{list-style:none;text-align:left;margin-bottom:2rem}
+.price-list li{font-size:0.84rem;color:var(--muted);padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;align-items:center;gap:0.6rem}
+.price-list li::before{content:'✦';color:var(--blue2);font-size:0.6rem;flex-shrink:0}
+
+/* TESTI */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+.testi-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:1.8rem;backdrop-filter:blur(20px)}
+.testi-stars{color:var(--gold);font-size:0.8rem;margin-bottom:0.9rem;letter-spacing:2px}
+.testi-q{font-size:1.3rem;color:var(--blue2);margin-bottom:0.5rem}
+.testi-text{font-size:0.85rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem;font-style:italic}
+.testi-person{display:flex;align-items:center;gap:0.8rem}
+.testi-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;flex-shrink:0}
+.testi-nm{font-size:0.85rem;font-weight:700}
+.testi-rl{font-size:0.72rem;color:var(--muted2)}
+
+/* FOOTER */
+footer{position:relative;z-index:2;background:rgba(2,8,23,0.95);border-top:1px solid var(--glass-border);padding:3.5rem 5% 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2.5rem}
+.footer-brand p{color:var(--muted);font-size:0.82rem;line-height:1.8;margin-top:0.8rem;max-width:260px}
+.footer-col h5{font-size:0.72rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--white);font-weight:700;margin-bottom:1rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.45rem}
+.footer-col a{color:var(--muted);text-decoration:none;font-size:0.82rem;transition:color 0.2s}
+.footer-col a:hover{color:var(--blue2)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;padding-top:1.5rem;border-top:1px solid var(--glass-border)}
+.footer-bottom p,.footer-bottom a{font-size:0.78rem;color:var(--muted2)}
+.footer-bottom a{color:var(--blue2);text-decoration:none}
+
+/* ═══════════════ EXAM DETAIL PAGE ═══════════════ */
+#examPage{background:var(--bg);min-height:100vh;padding-top:80px}
+.back-btn{display:inline-flex;align-items:center;gap:0.5rem;color:var(--blue2);font-size:0.85rem;font-weight:600;cursor:pointer;padding:0.5rem 0;margin-bottom:2rem;transition:gap 0.2s}
+.back-btn:hover{gap:0.8rem}
+.exam-hero{padding:3rem 5% 2rem;position:relative;z-index:2}
+.exam-hero-inner{display:flex;align-items:flex-start;gap:2rem;flex-wrap:wrap}
+.exam-icon-big{font-size:4rem;line-height:1;flex-shrink:0}
+.exam-hero-info{flex:1;min-width:220px}
+.exam-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:800;letter-spacing:-1.5px;margin-bottom:0.5rem}
+.exam-tagline{color:var(--muted);font-size:1rem;margin-bottom:1rem;line-height:1.7}
+.exam-chips{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.exam-chip-big{font-size:0.78rem;font-weight:700;padding:0.35rem 0.9rem;border-radius:6px;border:1px solid;text-transform:uppercase;letter-spacing:0.5px}
+.exam-stats-row{display:flex;gap:2rem;flex-wrap:wrap}
+.exam-stat{text-align:center;background:var(--glass);border:1px solid var(--glass-border);border-radius:10px;padding:0.9rem 1.4rem;backdrop-filter:blur(10px)}
+.exam-stat-n{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:800}
+.exam-stat-l{font-size:0.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+
+.exam-content{padding:0 5% 4rem;position:relative;z-index:2}
+.exam-tabs{display:flex;gap:0.5rem;margin-bottom:2rem;border-bottom:1px solid var(--glass-border);padding-bottom:0}
+.exam-tab{padding:0.7rem 1.3rem;font-size:0.85rem;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.2s}
+.exam-tab:hover{color:var(--white)}
+.exam-tab.active{color:var(--blue2);border-bottom-color:var(--blue2)}
+.exam-panel{display:none}
+.exam-panel.active{display:block}
+
+/* overview */
+.overview-grid{display:grid;grid-template-columns:2fr 1fr;gap:1.5rem;flex-wrap:wrap}
+.info-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:14px;padding:1.8rem;backdrop-filter:blur(10px)}
+.info-card h3{font-size:0.95rem;font-weight:700;margin-bottom:1rem;color:var(--blue2)}
+.info-card p{font-size:0.88rem;color:var(--muted);line-height:1.8;margin-bottom:1rem}
+.info-card ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+.info-card ul li{font-size:0.85rem;color:var(--muted);display:flex;align-items:flex-start;gap:0.6rem}
+.info-card ul li::before{content:'→';color:var(--blue2);font-weight:700;flex-shrink:0}
+.syllabus-item{display:flex;align-items:center;justify-content:space-between;padding:0.7rem 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.85rem}
+.syllabus-item:last-child{border-bottom:none}
+.syl-bar{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--blue),var(--cyan));margin-top:0.3rem}
+
+/* materials */
+.materials-filter{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.mat-filter{background:var(--glass);border:1px solid var(--glass-border);color:var(--muted);padding:0.35rem 0.9rem;border-radius:50px;font-size:0.78rem;font-weight:600;cursor:pointer;transition:all 0.2s}
+.mat-filter:hover,.mat-filter.active{background:rgba(59,130,246,0.15);border-color:rgba(59,130,246,0.4);color:var(--blue2)}
+.mat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem}
+.mat-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:14px;padding:1.4rem;backdrop-filter:blur(10px);transition:all 0.3s;cursor:pointer}
+.mat-card:hover{background:var(--glass-hover);border-color:rgba(59,130,246,0.3);transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,0.3)}
+.mat-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.8rem}
+.mat-type{font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding:0.2rem 0.6rem;border-radius:4px}
+.mat-type-pyq{background:rgba(245,158,11,0.15);color:var(--gold);border:1px solid rgba(245,158,11,0.2)}
+.mat-type-notes{background:rgba(59,130,246,0.15);color:var(--blue2);border:1px solid rgba(59,130,246,0.2)}
+.mat-type-formula{background:rgba(16,185,129,0.15);color:var(--green);border:1px solid rgba(16,185,129,0.2)}
+.mat-type-mock{background:rgba(139,92,246,0.15);color:#a78bfa;border:1px solid rgba(139,92,246,0.2)}
+.mat-title{font-size:0.9rem;font-weight:700;margin-bottom:0.3rem;line-height:1.4}
+.mat-meta{font-size:0.75rem;color:var(--muted2);margin-bottom:1rem}
+.mat-footer{display:flex;align-items:center;justify-content:space-between}
+.mat-price{font-family:'Playfair Display',serif;font-size:1rem;font-weight:800;color:var(--gold)}
+.mat-price small{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.65rem;color:var(--muted2);font-weight:400}
+.mat-rent-btn{background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;border:none;padding:0.4rem 1rem;border-radius:6px;font-size:0.75rem;font-weight:600;cursor:pointer;transition:opacity 0.2s}
+.mat-rent-btn:hover{opacity:0.85}
+
+/* pricing tab */
+.exam-pricing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem;margin-bottom:2rem}
+.ep-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:14px;padding:1.8rem;backdrop-filter:blur(10px);text-align:center;transition:all 0.3s;position:relative}
+.ep-card:hover{transform:translateY(-4px);border-color:rgba(59,130,246,0.3)}
+.ep-card.pop{border-color:rgba(59,130,246,0.4);box-shadow:0 0 40px rgba(59,130,246,0.12)}
+.ep-pop{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;font-size:0.62rem;font-weight:700;padding:0.25rem 0.8rem;border-radius:50px;white-space:nowrap;text-transform:uppercase}
+.ep-name{font-size:0.72rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);font-weight:700;margin-bottom:0.8rem}
+.ep-price{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:800;line-height:1;margin-bottom:0.3rem}
+.ep-price sup{font-size:1rem;vertical-align:super}
+.ep-per{font-size:0.75rem;color:var(--muted2);margin-bottom:1.2rem}
+.ep-list{list-style:none;text-align:left;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:0.4rem}
+.ep-list li{font-size:0.8rem;color:var(--muted);display:flex;align-items:center;gap:0.5rem}
+.ep-list li::before{content:'✓';color:var(--green);font-weight:700;font-size:0.8rem;flex-shrink:0}
+
+/* reviews tab */
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.on{opacity:1;transform:translateY(0)}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(59,130,246,0.3);border-radius:3px}
+
+/* TOAST */
+.toast{position:fixed;top:1.5rem;right:1.5rem;z-index:9999;background:rgba(17,24,39,0.95);border:1px solid var(--glass-border);border-radius:10px;padding:0.9rem 1.4rem;display:flex;align-items:center;gap:0.7rem;transform:translateX(120%);transition:transform 0.3s;box-shadow:0 8px 30px rgba(0,0,0,0.5);max-width:300px;font-size:0.85rem}
+.toast.show{transform:translateX(0)}
+
+@media(max-width:768px){.nav-links{display:none}.footer-grid{grid-template-columns:1fr 1fr}.overview-grid{grid-template-columns:1fr}.exam-stats-row{gap:1rem}}
+</style>
+</head>
+<body>
+
+<div class="bg-orbs">
+  <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav>
+  <div class="logo" onclick="showHome()">Studify</div>
+  <ul class="nav-links">
+    <li><a onclick="showHome();scrollTo(&#39;#exams&#39;)">Exams</a></li>
+    <li><a onclick="showHome();scrollTo(&#39;#featured&#39;)">Materials</a></li>
+    <li><a onclick="showHome();scrollTo(&#39;#pricing&#39;)">Pricing</a></li>
+    <li><a onclick="showHome();scrollTo(&#39;#testimonials&#39;)">Reviews</a></li>
+    <li><a class="nav-btn" href="file:///C:/Users/ganes/Downloads/index_4.html#">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════ HOME PAGE ═══════════ -->
+<div class="page active" id="homePage">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-pill">🌍 India's #1 Study Rental Platform</div>
+    <h1>Every Exam.<br><span class="grad">One Platform.</span><br>Just ₹29/day.</h1>
+    <p>Premium study material for JEE, NEET, UPSC, SAT, GMAT, LSAT, Olympiads and 50+ more exams — rented affordably, viewed securely.</p>
+    <div class="hero-actions">
+      <a onclick="document.getElementById(&#39;exams&#39;).scrollIntoView({behavior:&#39;smooth&#39;})" class="btn-grad">Explore All Exams</a>
+      <a onclick="document.getElementById(&#39;pricing&#39;).scrollIntoView({behavior:&#39;smooth&#39;})" class="btn-ghost">See Pricing →</a>
+    </div>
+    <div class="stats-row">
+      <div class="stat-item"><div class="stat-n">1000+</div><div class="stat-l">Documents</div></div>
+      <div class="stat-item"><div class="stat-n">50+</div><div class="stat-l">Exam Types</div></div>
+      <div class="stat-item"><div class="stat-n">₹29</div><div class="stat-l">Starting Price</div></div>
+      <div class="stat-item"><div class="stat-n">0</div><div class="stat-l">Downloads Allowed</div></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EXAMS -->
+  <section class="sec" id="exams">
+    <div class="reveal on">
+      <div class="sec-eyebrow">Browse by Category</div>
+      <div class="sec-title">50+ Exams Covered</div>
+      <div class="sec-sub">Click any exam to explore material, pricing and reviews.</div>
+    </div>
+    <div class="tabs reveal on">
+      <div class="tab active" onclick="filterCats(&#39;all&#39;,this)">All Exams</div>
+      <div class="tab" onclick="filterCats(&#39;ind&#39;,this)">🇮🇳 Indian</div>
+      <div class="tab" onclick="filterCats(&#39;int&#39;,this)">🌍 International</div>
+      <div class="tab" onclick="filterCats(&#39;oly&#39;,this)">🏆 Olympiads</div>
+      <div class="tab" onclick="filterCats(&#39;sch&#39;,this)">📚 School</div>
+    </div>
+    <div class="cat-grid reveal on" id="catGrid">
+
+      <div class="cat-card" data-type="ind" onclick="openExam(&#39;jee&#39;)">
+        <div class="cat-top"><div class="cat-icon">⚙️</div><span class="cat-badge badge-ind">Indian</span></div>
+        <div class="cat-name">JEE — Main &amp; Advanced</div>
+        <div class="cat-desc">Complete prep covering Physics, Chemistry and Mathematics with PYQs and formula sheets.</div>
+        <div class="cat-exams"><span class="exam-chip">JEE Main</span><span class="exam-chip">JEE Advanced</span><span class="exam-chip">BITSAT</span><span class="exam-chip">VITEEE</span></div>
+      </div>
+
+      <div class="cat-card" data-type="ind" onclick="openExam(&#39;neet&#39;)">
+        <div class="cat-top"><div class="cat-icon">🩺</div><span class="cat-badge badge-ind">Indian</span></div>
+        <div class="cat-name">NEET &amp; Medical Exams</div>
+        <div class="cat-desc">Biology, Physics &amp; Chemistry notes, NCERT-based content and chapter-wise question banks.</div>
+        <div class="cat-exams"><span class="exam-chip">NEET UG</span><span class="exam-chip">AIIMS</span><span class="exam-chip">JIPMER</span></div>
+      </div>
+
+      <div class="cat-card" data-type="ind" onclick="openExam(&#39;upsc&#39;)">
+        <div class="cat-top"><div class="cat-icon">🏛️</div><span class="cat-badge badge-ind">Indian</span></div>
+        <div class="cat-name">UPSC Civil Services</div>
+        <div class="cat-desc">Prelims &amp; Mains notes, current affairs, GS papers and optional subject material.</div>
+        <div class="cat-exams"><span class="exam-chip">UPSC CSE</span><span class="exam-chip">IAS</span><span class="exam-chip">IPS</span><span class="exam-chip">IFS</span></div>
+      </div>
+
+      <div class="cat-card" data-type="ind" onclick="openExam(&#39;cat&#39;)">
+        <div class="cat-top"><div class="cat-icon">💼</div><span class="cat-badge badge-ind">Indian</span></div>
+        <div class="cat-name">MBA &amp; Management</div>
+        <div class="cat-desc">Comprehensive prep for India's top MBA entrance exams with strategies and mock tests.</div>
+        <div class="cat-exams"><span class="exam-chip">CAT</span><span class="exam-chip">XAT</span><span class="exam-chip">SNAP</span><span class="exam-chip">IIFT</span><span class="exam-chip">NMAT</span></div>
+      </div>
+
+      <div class="cat-card" data-type="ind" onclick="openExam(&#39;clat&#39;)">
+        <div class="cat-top"><div class="cat-icon">⚖️</div><span class="cat-badge badge-ind">Indian</span></div>
+        <div class="cat-name">Law Entrance Exams</div>
+        <div class="cat-desc">Legal reasoning, GK and logical reasoning prep for top Indian law schools.</div>
+        <div class="cat-exams"><span class="exam-chip">CLAT</span><span class="exam-chip">AILET</span><span class="exam-chip">SLAT</span><span class="exam-chip">LSAT India</span></div>
+      </div>
+
+      <div class="cat-card" data-type="ind" onclick="openExam(&#39;ssc&#39;)">
+        <div class="cat-top"><div class="cat-icon">📋</div><span class="cat-badge badge-ind">Indian</span></div>
+        <div class="cat-name">Govt &amp; Banking Exams</div>
+        <div class="cat-desc">SSC, Banking and Railway prep with topic-wise notes and previous year papers.</div>
+        <div class="cat-exams"><span class="exam-chip">SSC CGL</span><span class="exam-chip">IBPS PO</span><span class="exam-chip">RRB NTPC</span><span class="exam-chip">SBI PO</span></div>
+      </div>
+
+      <div class="cat-card" data-type="int" onclick="openExam(&#39;sat&#39;)">
+        <div class="cat-top"><div class="cat-icon">🇺🇸</div><span class="cat-badge badge-int">International</span></div>
+        <div class="cat-name">US College Admissions</div>
+        <div class="cat-desc">Full-length practice tests and strategies for US college entrance exams.</div>
+        <div class="cat-exams"><span class="exam-chip">SAT</span><span class="exam-chip">ACT</span><span class="exam-chip">AP Exams</span><span class="exam-chip">PSAT</span></div>
+      </div>
+
+      <div class="cat-card" data-type="int" onclick="openExam(&#39;gmat&#39;)">
+        <div class="cat-top"><div class="cat-icon">🎓</div><span class="cat-badge badge-int">International</span></div>
+        <div class="cat-name">Graduate Admissions</div>
+        <div class="cat-desc">Strategy notes and practice questions for top international graduate programs.</div>
+        <div class="cat-exams"><span class="exam-chip">GRE</span><span class="exam-chip">GMAT</span><span class="exam-chip">TOEFL</span><span class="exam-chip">IELTS</span></div>
+      </div>
+
+      <div class="cat-card" data-type="int" onclick="openExam(&#39;lsat&#39;)">
+        <div class="cat-top"><div class="cat-icon">🏫</div><span class="cat-badge badge-int">International</span></div>
+        <div class="cat-name">International Law Schools</div>
+        <div class="cat-desc">Logical reasoning and analytical thinking prep for top international law admissions.</div>
+        <div class="cat-exams"><span class="exam-chip">LSAT</span><span class="exam-chip">LNAT</span></div>
+      </div>
+
+      <div class="cat-card" data-type="oly" onclick="openExam(&#39;imo&#39;)">
+        <div class="cat-top"><div class="cat-icon">🔢</div><span class="cat-badge badge-oly">Olympiad</span></div>
+        <div class="cat-name">Mathematics Olympiads</div>
+        <div class="cat-desc">From IOQM to IMO — number theory, algebra, combinatorics and geometry.</div>
+        <div class="cat-exams"><span class="exam-chip">IOQM</span><span class="exam-chip">RMO</span><span class="exam-chip">INMO</span><span class="exam-chip">IMO</span><span class="exam-chip">AIME</span><span class="exam-chip">AMC</span></div>
+      </div>
+
+      <div class="cat-card" data-type="oly" onclick="openExam(&#39;ipho&#39;)">
+        <div class="cat-top"><div class="cat-icon">⚡</div><span class="cat-badge badge-oly">Olympiad</span></div>
+        <div class="cat-name">Physics Olympiads</div>
+        <div class="cat-desc">Theoretical and experimental physics from national qualifier to international level.</div>
+        <div class="cat-exams"><span class="exam-chip">NSEP</span><span class="exam-chip">INPhO</span><span class="exam-chip">IPhO</span><span class="exam-chip">USAPhO</span></div>
+      </div>
+
+      <div class="cat-card" data-type="oly" onclick="openExam(&#39;icho&#39;)">
+        <div class="cat-top"><div class="cat-icon">🧪</div><span class="cat-badge badge-oly">Olympiad</span></div>
+        <div class="cat-name">Chemistry Olympiads</div>
+        <div class="cat-desc">Theoretical and practical chemistry with past paper solutions.</div>
+        <div class="cat-exams"><span class="exam-chip">NSEC</span><span class="exam-chip">INChO</span><span class="exam-chip">IChO</span><span class="exam-chip">USNCO</span></div>
+      </div>
+
+      <div class="cat-card" data-type="oly" onclick="openExam(&#39;ibo&#39;)">
+        <div class="cat-top"><div class="cat-icon">🧬</div><span class="cat-badge badge-oly">Olympiad</span></div>
+        <div class="cat-name">Biology Olympiads</div>
+        <div class="cat-desc">Cell biology, genetics, ecology and experimental biology prep.</div>
+        <div class="cat-exams"><span class="exam-chip">NSEB</span><span class="exam-chip">INBO</span><span class="exam-chip">IBO</span><span class="exam-chip">USABO</span></div>
+      </div>
+
+      <div class="cat-card" data-type="oly" onclick="openExam(&#39;ioaa&#39;)">
+        <div class="cat-top"><div class="cat-icon">🌌</div><span class="cat-badge badge-oly">Olympiad</span></div>
+        <div class="cat-name">Astronomy &amp; Earth Science</div>
+        <div class="cat-desc">Astrophysics, planetary science and earth science olympiad prep.</div>
+        <div class="cat-exams"><span class="exam-chip">IOAA</span><span class="exam-chip">IAO</span><span class="exam-chip">IESO</span><span class="exam-chip">NSEA</span></div>
+      </div>
+
+      <div class="cat-card" data-type="oly" onclick="openExam(&#39;ioi&#39;)">
+        <div class="cat-top"><div class="cat-icon">💻</div><span class="cat-badge badge-oly">Olympiad</span></div>
+        <div class="cat-name">Informatics &amp; AI Olympiads</div>
+        <div class="cat-desc">Competitive programming, data structures and algorithms.</div>
+        <div class="cat-exams"><span class="exam-chip">IOI</span><span class="exam-chip">IOAI</span><span class="exam-chip">USACO</span><span class="exam-chip">ZCO</span></div>
+      </div>
+
+      <div class="cat-card" data-type="oly" onclick="openExam(&#39;ijso&#39;)">
+        <div class="cat-top"><div class="cat-icon">🏆</div><span class="cat-badge badge-oly">Olympiad</span></div>
+        <div class="cat-name">Junior &amp; Other Olympiads</div>
+        <div class="cat-desc">IJSO, linguistics, economics, geography and junior science competitions.</div>
+        <div class="cat-exams"><span class="exam-chip">IJSO</span><span class="exam-chip">IOL</span><span class="exam-chip">IEO</span><span class="exam-chip">iGeo</span><span class="exam-chip">IPO</span></div>
+      </div>
+
+      <div class="cat-card" data-type="sch" onclick="openExam(&#39;cbse&#39;)">
+        <div class="cat-top"><div class="cat-icon">📚</div><span class="cat-badge badge-sch">School</span></div>
+        <div class="cat-name">Board Exams</div>
+        <div class="cat-desc">Chapter-wise notes, sample papers for Class 9–12 board exams.</div>
+        <div class="cat-exams"><span class="exam-chip">CBSE 10</span><span class="exam-chip">CBSE 12</span><span class="exam-chip">ICSE</span><span class="exam-chip">ISC</span><span class="exam-chip">State Boards</span></div>
+      </div>
+
+      <div class="cat-card" data-type="sch" onclick="openExam(&#39;sof&#39;)">
+        <div class="cat-top"><div class="cat-icon">🌟</div><span class="cat-badge badge-sch">School</span></div>
+        <div class="cat-name">School-Level Olympiads</div>
+        <div class="cat-desc">SOF, Silverzone and other school olympiad prep material.</div>
+        <div class="cat-exams"><span class="exam-chip">IMO (SOF)</span><span class="exam-chip">NSO</span><span class="exam-chip">IEO</span><span class="exam-chip">IGKO</span><span class="exam-chip">NCO</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FEATURED DOCS -->
+  <section class="sec" id="featured">
+    <div class="reveal on">
+      <div class="sec-eyebrow">Top Picks</div>
+      <div class="sec-title">Featured Materials</div>
+      <div class="sec-sub">Highest rated documents this month.</div>
+    </div>
+    <div class="docs-grid reveal on">
+      <div class="doc-card"><div class="doc-label">JEE Advanced</div><div class="doc-stars">★★★★★</div><div class="doc-title">Physics Complete Formula Booklet 2024</div><div class="doc-meta">62 pages · Mechanics to Modern Physics</div><div class="doc-footer"><div class="doc-price">₹49 <small>/ day</small></div><button class="rent-btn" onclick="rentDoc(this)">Rent Now</button></div></div>
+      <div class="doc-card"><div class="doc-label">NEET</div><div class="doc-stars">★★★★★</div><div class="doc-title">Biology Diagrams &amp; NCERT Notes</div><div class="doc-meta">88 pages · Botany + Zoology</div><div class="doc-footer"><div class="doc-price">₹39 <small>/ day</small></div><button class="rent-btn" onclick="rentDoc(this)">Rent Now</button></div></div>
+      <div class="doc-card"><div class="doc-label">UPSC</div><div class="doc-stars">★★★★☆</div><div class="doc-title">Current Affairs Jan–Mar 2024</div><div class="doc-meta">120 pages · Updated March 2024</div><div class="doc-footer"><div class="doc-price">₹29 <small>/ day</small></div><button class="rent-btn" onclick="rentDoc(this)">Rent Now</button></div></div>
+      <div class="doc-card"><div class="doc-label">SAT</div><div class="doc-stars">★★★★★</div><div class="doc-title">SAT Math — Advanced Topics &amp; Strategies</div><div class="doc-meta">74 pages · Digital SAT Format</div><div class="doc-footer"><div class="doc-price">₹39 <small>/ day</small></div><button class="rent-btn" onclick="rentDoc(this)">Rent Now</button></div></div>
+      <div class="doc-card"><div class="doc-label">IMO / IOQM</div><div class="doc-stars">★★★★★</div><div class="doc-title">Number Theory for Math Olympiads</div><div class="doc-meta">96 pages · IOQM to IMO Level</div><div class="doc-footer"><div class="doc-price">₹59 <small>/ day</small></div><button class="rent-btn" onclick="rentDoc(this)">Rent Now</button></div></div>
+      <div class="doc-card"><div class="doc-label">GMAT</div><div class="doc-stars">★★★★☆</div><div class="doc-title">GMAT Focus Edition — Complete Guide</div><div class="doc-meta">110 pages · Quant + Verbal + DI</div><div class="doc-footer"><div class="doc-price">₹49 <small>/ day</small></div><button class="rent-btn" onclick="rentDoc(this)">Rent Now</button></div></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PRICING -->
+  <section class="sec" id="pricing" style="text-align:center">
+    <div class="reveal on">
+      <div class="sec-eyebrow">Simple Pricing</div>
+      <div class="sec-title">Affordable for Every Student</div>
+      <div class="sec-sub" style="margin:0 auto 3rem">No hidden fees. Pay only for what you need.</div>
+    </div>
+    <div class="pricing-wrap reveal">
+      <div class="price-card">
+        <div class="price-name">Day Pass</div><div class="price-val"><sup>₹</sup>29</div>
+        <div class="price-per">per document · 24 hours</div>
+        <ul class="price-list"><li>1 document for 24 hours</li><li>View on any device</li><li>No downloads ever</li><li>Instant access</li></ul>
+        <a href="file:///C:/Users/ganes/Downloads/index_4.html#" class="btn-ghost" style="display:block;text-align:center">Get Started</a>
+      </div>
+      <div class="price-card pop">
+        <div class="pop-label">⭐ Most Popular</div>
+        <div class="price-name">Monthly</div><div class="price-val"><sup>₹</sup>99</div>
+        <div class="price-per">unlimited access · 30 days</div>
+        <ul class="price-list"><li>All documents — 30 days</li><li>View on any device</li><li>No downloads ever</li><li>Bookmark &amp; highlight</li><li>Priority support</li></ul>
+        <a href="file:///C:/Users/ganes/Downloads/index_4.html#" class="btn-grad" style="display:block;text-align:center">Get Started</a>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Bundle</div><div class="price-val"><sup>₹</sup>199</div>
+        <div class="price-per">any 5 documents · 7 days</div>
+        <ul class="price-list"><li>Any 5 documents</li><li>7 days full access</li><li>No downloads ever</li><li>Bookmark &amp; highlight</li><li>Priority support</li></ul>
+        <a href="file:///C:/Users/ganes/Downloads/index_4.html#" class="btn-ghost" style="display:block;text-align:center">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TESTIMONIALS -->
+  <section class="sec" id="testimonials">
+    <div class="reveal">
+      <div class="sec-eyebrow">Student Reviews</div>
+      <div class="sec-title">Loved Across India &amp; Beyond</div>
+      <div class="sec-sub">Real students, real results.</div>
+    </div>
+    <div class="testi-grid reveal">
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><div class="testi-q">"</div><div class="testi-text">The JEE formula booklets are a lifesaver. ₹29 is nothing compared to what coaching institutes charge!</div><div class="testi-person"><div class="testi-av">AR</div><div><div class="testi-nm">Arjun Reddy</div><div class="testi-rl">JEE Advanced 2024 — AIR 847</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><div class="testi-q">"</div><div class="testi-text">Used the IOQM number theory notes and made it to INMO. The content is olympiad-specific and super structured.</div><div class="testi-person"><div class="testi-av">SK</div><div><div class="testi-nm">Siddharth Kumar</div><div class="testi-rl">INMO 2024 Qualifier</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><div class="testi-q">"</div><div class="testi-text">Based in the US, needed SAT prep on a tight budget. Studify had everything for $0.35/day. Scored 1540!</div><div class="testi-person"><div class="testi-av">NP</div><div><div class="testi-nm">Neha Patel</div><div class="testi-rl">SAT 2024 — Score 1540/1600</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><div class="testi-q">"</div><div class="testi-text">Cleared NEET with 680/720. The biology diagrams were a game changer — especially zoology flowcharts.</div><div class="testi-person"><div class="testi-av">PS</div><div><div class="testi-nm">Priya Sharma</div><div class="testi-rl">NEET UG 2024 — 680/720</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★☆</div><div class="testi-q">"</div><div class="testi-text">UPSC current affairs compilations are always up to date. Way cheaper than coaching material!</div><div class="testi-person"><div class="testi-av">MK</div><div><div class="testi-nm">Manish Kumar</div><div class="testi-rl">UPSC CSE Aspirant, Delhi</div></div></div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><div class="testi-q">"</div><div class="testi-text">The GMAT Focus guide was thorough. Rented it for a week and scored 705. Highly recommend!</div><div class="testi-person"><div class="testi-av">RA</div><div><div class="testi-nm">Rohan Agarwal</div><div class="testi-rl">GMAT 2024 — Score 705</div></div></div></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="font-family:&#39;Playfair Display&#39;,serif;font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,#fff,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Studify</div>
+        <p>India's most affordable study rental platform. One place for every exam — JEE to IMO to LSAT.</p>
+      </div>
+      <div class="footer-col"><h5>Indian Exams</h5><ul><li><a href="file:///C:/Users/ganes/Downloads/index_4.html#">JEE Main &amp; Advanced</a></li><li><a href="file:///C:/Users/ganes/Downloads/index_4.html#">NEET UG</a></li><li><a href="file:///C:/Users/ganes/Downloads/index_4.html#">UPSC CSE</a></li><li><a href="file:///C:/Users/ganes/Downloads/index_4.html#">CAT / XAT</a></li><li><a href="file:///C:/Users/ganes/Downloads/index_4.html#">CLAT / AILET</a></li></ul></div>
+      <div class="footer-col"><h5>Olympiads</h5><ul><li><a href="file:///C:/Users/ganes/Downloads/index_4.html#">IMO / IOQM</a></li><li><a href="file:///C:/Users/ganes/Downloads/index_4.html#">IPhO / INPhO</a></li><li><a href="file:///C:/Users/ganes/Downloads/index_4.html#">IChO / INChO</a></li><li><a href="file:///C:/Users/ganes/Downloads/index_4.html#">IBO / IJSO</a></li><li><a href="file:///C:/Users/ganes/Downloads/index_4.html#">AIME / AMC / IOI</a></li></ul></div>
+      <div class="footer-col"><h5>Company</h5><ul><li><a href="file:///C:/Users/ganes/Downloads/index_4.html#">About Us</a></li><li><a href="file:///C:/Users/ganes/Downloads/index_4.html#">How It Works</a></li><li><a href="file:///C:/Users/ganes/Downloads/index_4.html#">Privacy Policy</a></li><li><a href="file:///C:/Users/ganes/Downloads/index_4.html#">Terms of Use</a></li><li><a href="file:///C:/Users/ganes/Downloads/index_4.html#">Contact Us</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2024 Studify. All rights reserved.</p><a href="mailto:hello@studify.in">hello@studify.in</a></div>
+  </footer>
+
+</div><!-- end homePage -->
+
+
+<!-- ═══════════ EXAM DETAIL PAGE ═══════════ -->
+<div class="page" id="examPage">
+  <div style="padding:5rem 5% 0;position:relative;z-index:2">
+    <div class="back-btn" onclick="showHome()">← Back to All Exams</div>
+  </div>
+
+  <div class="exam-hero">
+    <div class="exam-hero-inner">
+      <div class="exam-icon-big" id="examIcon">🏫</div>
+      <div class="exam-hero-info">
+        <div class="exam-chips" id="examChips"><span class="exam-chip-big badge-int" style="border-color:rgba(255,255,255,0.15);color:var(--muted2)">LSAT</span><span class="exam-chip-big badge-int" style="border-color:rgba(255,255,255,0.15);color:var(--muted2)">LNAT</span></div>
+        <h1 class="exam-title" id="examTitle">LSAT &amp; LNAT — Law School Admissions</h1>
+        <p class="exam-tagline" id="examTagline">Get into the world's best law schools with targeted prep material.</p>
+        <div class="exam-stats-row" id="examStats"><div class="exam-stat"><div class="exam-stat-n grad">25+</div><div class="exam-stat-l">Documents</div></div><div class="exam-stat"><div class="exam-stat-n grad">₹39</div><div class="exam-stat-l">Starting/Day</div></div><div class="exam-stat"><div class="exam-stat-n grad">4.6★</div><div class="exam-stat-l">Avg Rating</div></div><div class="exam-stat"><div class="exam-stat-n grad">380+</div><div class="exam-stat-l">Students</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exam-content">
+    <div class="exam-tabs">
+      <div class="exam-tab active" onclick="switchExamTab(&#39;overview&#39;,this)">📋 Overview</div>
+      <div class="exam-tab" onclick="switchExamTab(&#39;materials&#39;,this)">📄 Study Material</div>
+      <div class="exam-tab" onclick="switchExamTab(&#39;pricing&#39;,this)">🏷️ Pricing</div>
+      <div class="exam-tab" onclick="switchExamTab(&#39;reviews&#39;,this)">⭐ Reviews</div>
+    </div>
+
+    <!-- OVERVIEW -->
+    <div class="exam-panel active" id="ep-overview">
+      <div class="overview-grid">
+        <div>
+          <div class="info-card" style="margin-bottom:1.2rem" id="examAbout">
+    <h3>About LSAT &amp; LNAT</h3><p>The LSAT is required for US/Canadian law schools while the LNAT is required for UK law schools like Oxford and Cambridge. Both test critical reasoning and analytical skills at a high level.</p>
+    <ul><li>LSAT: 120–180 score scale</li><li>LNAT: MCQ section + Essay section</li><li>LSAT: Logical Reasoning, Analytical Reasoning, Reading Comprehension</li><li>LNAT: 42 MCQs in 95 mins + 40 min essay</li></ul></div>
+          <div class="info-card" id="examSyllabus">
+    <h3>Key Topics</h3>
+    
+      <div class="syllabus-item">
+        <div><div>Logical Reasoning — Argument Analysis</div><div class="syl-bar" style="width:95%"></div></div>
+      </div>
+      <div class="syllabus-item">
+        <div><div>Analytical Reasoning — Logic Games</div><div class="syl-bar" style="width:90%"></div></div>
+      </div>
+      <div class="syllabus-item">
+        <div><div>Reading Comprehension — Dense Passages</div><div class="syl-bar" style="width:80%"></div></div>
+      </div>
+      <div class="syllabus-item">
+        <div><div>LNAT — Critical Thinking MCQs</div><div class="syl-bar" style="width:85%"></div></div>
+      </div>
+      <div class="syllabus-item">
+        <div><div>LNAT — Essay Writing</div><div class="syl-bar" style="width:75%"></div></div>
+      </div></div>
+        </div>
+        <div>
+          <div class="info-card" style="margin-bottom:1.2rem" id="examPattern">
+    <h3>Exam Pattern</h3><ul><li>LSAT: 4–5 sections · 35 mins each · ~100 questions</li><li>LNAT: Section A (42 MCQs, 95 mins) + Section B (Essay, 40 mins)</li><li>LSAT is administered digitally via ProctorU</li><li>LNAT score sent directly to universities</li></ul></div>
+          <div class="info-card" id="examTips">
+    <h3>Prep Tips</h3><ul><li>Logic Games are learnable — practice daily</li><li>Time management is critical for LSAT</li><li>For LNAT essay, practice structuring arguments quickly</li><li>Read complex articles to improve passage comprehension</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MATERIALS -->
+    <div class="exam-panel" id="ep-materials">
+      <div class="materials-filter" id="matFilters"><div class="mat-filter active" onclick="filterMats(&#39;all&#39;,this)">All</div><div class="mat-filter" onclick="filterMats(&#39;notes&#39;,this)">Notes</div><div class="mat-filter" onclick="filterMats(&#39;pyq&#39;,this)">Pyq</div></div>
+      <div class="mat-grid" id="matGrid">
+    <div class="mat-card" data-mtype="notes">
+      <div class="mat-card-top">
+        <span class="mat-type mat-type-notes">Notes</span>
+        <span style="color:var(--gold);font-size:0.75rem">★★★★☆</span>
+      </div>
+      <div class="mat-title">LSAT Logical Reasoning — Full Prep Guide</div>
+      <div class="mat-meta">85 pages · All question types covered</div>
+      <div class="mat-footer">
+        <div class="mat-price">₹39 <small>/ day</small></div>
+        <button class="mat-rent-btn" onclick="rentDoc(this)">Rent Now</button>
+      </div>
+    </div>
+    <div class="mat-card" data-mtype="notes">
+      <div class="mat-card-top">
+        <span class="mat-type mat-type-notes">Notes</span>
+        <span style="color:var(--gold);font-size:0.75rem">★★★★★</span>
+      </div>
+      <div class="mat-title">LSAT Logic Games — Strategy &amp; Drills</div>
+      <div class="mat-meta">70 pages · 50+ games with solutions</div>
+      <div class="mat-footer">
+        <div class="mat-price">₹49 <small>/ day</small></div>
+        <button class="mat-rent-btn" onclick="rentDoc(this)">Rent Now</button>
+      </div>
+    </div>
+    <div class="mat-card" data-mtype="pyq">
+      <div class="mat-card-top">
+        <span class="mat-type mat-type-pyq">PYQ</span>
+        <span style="color:var(--gold);font-size:0.75rem">★★★★★</span>
+      </div>
+      <div class="mat-title">LSAT Official PYQ — 10 PrepTests</div>
+      <div class="mat-meta">Full tests with explanations</div>
+      <div class="mat-footer">
+        <div class="mat-price">₹59 <small>/ day</small></div>
+        <button class="mat-rent-btn" onclick="rentDoc(this)">Rent Now</button>
+      </div>
+    </div>
+    <div class="mat-card" data-mtype="notes">
+      <div class="mat-card-top">
+        <span class="mat-type mat-type-notes">Notes</span>
+        <span style="color:var(--gold);font-size:0.75rem">★★★★☆</span>
+      </div>
+      <div class="mat-title">LNAT Complete Prep Guide</div>
+      <div class="mat-meta">60 pages · MCQ strategies + Essay templates</div>
+      <div class="mat-footer">
+        <div class="mat-price">₹39 <small>/ day</small></div>
+        <button class="mat-rent-btn" onclick="rentDoc(this)">Rent Now</button>
+      </div>
+    </div></div>
+    </div>
+
+    <!-- PRICING -->
+    <div class="exam-panel" id="ep-pricing">
+      <div class="exam-pricing-grid" id="examPricingCards">
+    <div class="ep-card">
+      <div class="ep-name">Day Pass</div>
+      <div class="ep-price"><sup>₹</sup>39</div>
+      <div class="ep-per">per document · 24 hours</div>
+      <ul class="ep-list"><li>1 document for 24 hours</li><li>View on any device</li><li>No downloads</li><li>Instant access</li></ul>
+      <button class="btn-ghost" style="width:100%;justify-content:center" onclick="showToast(&#39;🎉 Redirecting to checkout!&#39;)">Get Access</button>
+    </div>
+    <div class="ep-card pop">
+      <div class="ep-pop">⭐ Best Value</div>
+      <div class="ep-name">Week Pass</div>
+      <div class="ep-price"><sup>₹</sup>129</div>
+      <div class="ep-per">per document · 7 days</div>
+      <ul class="ep-list"><li>1 document for 7 days</li><li>View on any device</li><li>No downloads</li><li>Bookmark &amp; highlight</li><li>Priority support</li></ul>
+      <button class="btn-grad" style="width:100%;justify-content:center" onclick="showToast(&#39;🎉 Redirecting to checkout!&#39;)">Get Access</button>
+    </div>
+    <div class="ep-card">
+      <div class="ep-name">Monthly</div>
+      <div class="ep-price"><sup>₹</sup>199</div>
+      <div class="ep-per">all LSAT &amp; LNAT docs · 30 days</div>
+      <ul class="ep-list"><li>All documents in this category</li><li>30 days unlimited viewing</li><li>No downloads</li><li>Bookmark &amp; highlight</li><li>Priority support</li></ul>
+      <button class="btn-ghost" style="width:100%;justify-content:center" onclick="showToast(&#39;🎉 Redirecting to checkout!&#39;)">Get Access</button>
+    </div>
+    <div class="ep-card">
+      <div class="ep-name">Bundle (5 Docs)</div>
+      <div class="ep-price"><sup>₹</sup>249</div>
+      <div class="ep-per">any 5 documents · 7 days</div>
+      <ul class="ep-list"><li>Pick any 5 documents</li><li>7 days full access</li><li>No downloads</li><li>Priority support</li></ul>
+      <button class="btn-ghost" style="width:100%;justify-content:center" onclick="showToast(&#39;🎉 Redirecting to checkout!&#39;)">Get Access</button>
+    </div></div>
+      <div class="info-card" id="examPricingNote">
+    <h3>💡 Pricing Note</h3><p>LSAT/LNAT material is priced at the international rate due to the specialised content quality.</p></div>
+    </div>
+
+    <!-- REVIEWS -->
+    <div class="exam-panel" id="ep-reviews">
+      <div class="reviews-grid" id="examReviews">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-q">"</div>
+      <div class="testi-text">The Logic Games strategy guide is incredible. Went from struggling to finishing with time to spare.</div>
+      <div class="testi-person">
+        <div class="testi-av">AK</div>
+        <div><div class="testi-nm">Aisha K.</div><div class="testi-rl">LSAT — Score 172</div></div>
+      </div>
+    </div></div>
+    </div>
+
+  </div>
+</div><!-- end examPage -->
+
+
+<script>
+// ══════════════════════════════════════════════
+//  EXAM DATA
+// ══════════════════════════════════════════════
+const EXAMS = {
+  jee:{
+    icon:'⚙️', title:'JEE — Main & Advanced', badge:'Indian', badgeClass:'badge-ind',
+    tagline:"India's most competitive engineering entrance. 2 levels, one dream — IIT.",
+    stats:[{n:'80+',l:'Documents'},{n:'₹39',l:'Starting/Day'},{n:'4.9★',l:'Avg Rating'},{n:'2,400+',l:'Students'}],
+    chips:['JEE Main','JEE Advanced','BITSAT','VITEEE'],
+    about:{title:'About JEE',text:'The Joint Entrance Examination is India\'s premier engineering entrance exam conducted by NTA. JEE Main is the qualifier and JEE Advanced is the gateway to IITs. The exam tests Physics, Chemistry and Mathematics at an extremely high level.',points:['Two stages: JEE Main & JEE Advanced','IITs, NITs, IIITs, CFTIs accept JEE scores','Physics, Chemistry, Maths — equal weightage','Negative marking in all sections']},
+    syllabus:{title:'Key Syllabus Topics',items:[{t:'Physics — Mechanics & Thermodynamics',p:90},{t:'Physics — Electrostatics & Optics',p:85},{t:'Chemistry — Organic Reactions',p:95},{t:'Chemistry — Physical Chemistry',p:80},{t:'Maths — Calculus & Algebra',p:90},{t:'Maths — Coordinate Geometry',p:75}]},
+    pattern:{title:'Exam Pattern',points:['JEE Main: 90 Questions · 3 hours · ±4/−1 marking','JEE Advanced: 2 papers · 3 hours each','Multiple choice + integer type + paragraph based','No negative marking in some sections of Advanced']},
+    tips:{title:'Prep Tips',points:['Start with NCERT for Chemistry','Solve 20+ years of PYQs','Focus on weak topics first','Take full mocks every 2 weeks']},
+    materials:[
+      {type:'formula',typeLabel:'Formula Sheet',title:'Physics Complete Formula Booklet',meta:'62 pages · All chapters · Updated 2024',price:49,stars:'★★★★★'},
+      {type:'pyq',typeLabel:'PYQ',title:'JEE Advanced PYQ 2013–2024 with Solutions',meta:'220 pages · Full solutions + analysis',price:59,stars:'★★★★★'},
+      {type:'notes',typeLabel:'Notes',title:'Organic Chemistry Master Notes',meta:'88 pages · All reactions & mechanisms',price:49,stars:'★★★★★'},
+      {type:'mock',typeLabel:'Mock Test',title:'JEE Main Full Mock Test Series (10 Tests)',meta:'10 tests · OMR format · Detailed analysis',price:79,stars:'★★★★☆'},
+      {type:'notes',typeLabel:'Notes',title:'Calculus & Integration — Deep Dive Notes',meta:'56 pages · IIT level problems included',price:49,stars:'★★★★★'},
+      {type:'formula',typeLabel:'Formula Sheet',title:'Chemistry Formula & Reaction Sheet',meta:'38 pages · Organic + Inorganic + Physical',price:39,stars:'★★★★☆'},
+      {type:'pyq',typeLabel:'PYQ',title:'JEE Main PYQ Chapter-wise 2010–2024',meta:'180 pages · Topic-wise sorted',price:49,stars:'★★★★★'},
+      {type:'notes',typeLabel:'Notes',title:'Coordinate Geometry Complete Notes',meta:'44 pages · Straight lines to conics',price:39,stars:'★★★★☆'},
+    ],
+    pricing_note:'JEE material is priced higher due to the depth and complexity of content. All documents are expert-curated for IIT-level preparation.',
+    reviews:[
+      {stars:'★★★★★',text:'The JEE PYQ booklet is incredible. 10 years of papers with detailed solutions. Worth every rupee!',name:'Arjun R.',role:'JEE Advanced 2024 — AIR 847',av:'AR'},
+      {stars:'★★★★★',text:'The formula sheets saved my revision week. Printed nothing, just rented and studied on my phone.',name:'Shreya M.',role:'JEE Main — 99.2 percentile',av:'SM'},
+      {stars:'★★★★☆',text:'Organic chemistry notes are top quality. Covers all reactions with mechanisms. Highly recommend.',name:'Kabir P.',role:'JEE Advanced 2023',av:'KP'},
+    ]
+  },
+  neet:{
+    icon:'🩺', title:'NEET UG & Medical Exams', badge:'Indian', badgeClass:'badge-ind',
+    tagline:'The gateway to MBBS in India. Master Biology, Physics & Chemistry.',
+    stats:[{n:'65+',l:'Documents'},{n:'₹39',l:'Starting/Day'},{n:'4.8★',l:'Avg Rating'},{n:'1,800+',l:'Students'}],
+    chips:['NEET UG','AIIMS','JIPMER'],
+    about:{title:'About NEET',text:'The National Eligibility cum Entrance Test (NEET-UG) is the single entrance exam for MBBS and BDS admission across India. Biology carries the highest weightage, making it the most critical subject.',points:['Single exam for all medical colleges','Biology (360) + Physics (180) + Chemistry (180)','720 marks total · 180 questions','Conducted by NTA once a year']},
+    syllabus:{title:'Key Syllabus Topics',items:[{t:'Botany — Plant Physiology',p:90},{t:'Zoology — Human Physiology',p:95},{t:'Zoology — Genetics & Evolution',p:85},{t:'Physics — Mechanics & Optics',p:75},{t:'Chemistry — Organic Chemistry',p:80},{t:'Chemistry — Biomolecules',p:85}]},
+    pattern:{title:'Exam Pattern',points:['180 questions · 200 minutes','Section A: 35 MCQs + Section B: 15 MCQs (attempt 10)','+4 for correct, −1 for wrong','Physics, Chemistry, Botany, Zoology sections']},
+    tips:{title:'Prep Tips',points:['NCERT is the Bible for NEET Biology','Diagram-based questions are frequent','Focus on NCERT lines — exam is NCERT heavy','Do at least 5 full mocks before exam']},
+    materials:[
+      {type:'notes',typeLabel:'Notes',title:'Biology Diagrams & NCERT Notes',meta:'88 pages · Botany + Zoology full coverage',price:39,stars:'★★★★★'},
+      {type:'pyq',typeLabel:'PYQ',title:'NEET PYQ 2013–2024 Chapter-wise',meta:'200 pages · All subjects · Detailed solutions',price:49,stars:'★★★★★'},
+      {type:'formula',typeLabel:'Formula Sheet',title:'Physics Formula Sheet for NEET',meta:'30 pages · NEET-focused derivations',price:29,stars:'★★★★☆'},
+      {type:'notes',typeLabel:'Notes',title:'Genetics & Evolution Master Notes',meta:'52 pages · Mendel to Modern genetics',price:39,stars:'★★★★★'},
+      {type:'mock',typeLabel:'Mock Test',title:'NEET Full Mock Test Series (8 Tests)',meta:'8 full tests · NEET pattern · Solutions',price:69,stars:'★★★★☆'},
+      {type:'notes',typeLabel:'Notes',title:'Human Physiology — Complete Notes',meta:'66 pages · All systems in detail',price:39,stars:'★★★★★'},
+    ],
+    pricing_note:'NEET material pricing reflects comprehensive NCERT-based content with expert annotations and diagram clarity.',
+    reviews:[
+      {stars:'★★★★★',text:'Cleared NEET with 680/720. The biology diagrams and zoology flowcharts made everything crystal clear.',name:'Priya S.',role:'NEET UG 2024 — 680/720',av:'PS'},
+      {stars:'★★★★★',text:'The PYQ chapter-wise book is a goldmine. Every important question patterned by topic.',name:'Riya T.',role:'NEET 2024 — 660/720',av:'RT'},
+    ]
+  },
+  upsc:{
+    icon:'🏛️', title:'UPSC Civil Services', badge:'Indian', badgeClass:'badge-ind',
+    tagline:'India\'s most prestigious exam. Prepare smarter with curated UPSC material.',
+    stats:[{n:'58+',l:'Documents'},{n:'₹29',l:'Starting/Day'},{n:'4.7★',l:'Avg Rating'},{n:'1,200+',l:'Students'}],
+    chips:['UPSC CSE','IAS','IPS','IFS'],
+    about:{title:'About UPSC CSE',text:'The Civil Services Examination conducted by UPSC is India\'s most challenging exam. It selects candidates for IAS, IPS, IFS and other central services through a 3-stage process spanning over a year.',points:['Stage 1: Prelims (Objective) — 2 papers','Stage 2: Mains (Descriptive) — 9 papers','Stage 3: Personality Interview','Entire process takes 12–18 months']},
+    syllabus:{title:'Key Syllabus Areas',items:[{t:'History & Indian Culture',p:85},{t:'Indian Polity & Constitution',p:90},{t:'Geography — Physical & Human',p:80},{t:'Economy & Social Issues',p:85},{t:'Science & Technology',p:70},{t:'Current Affairs & Environment',p:95}]},
+    pattern:{title:'Exam Pattern',points:['Prelims: GS Paper I (200 marks) + CSAT (200 marks)','Mains: 9 papers including essay, GS and optional','Interview: 275 marks personality test','Total marks (Mains + Interview): 2025']},
+    tips:{title:'Prep Tips',points:['Read The Hindu / Indian Express daily','Laxmikanth is essential for Polity','Make short notes for revision','Cover PYQs for both Prelims and Mains']},
+    materials:[
+      {type:'notes',typeLabel:'Notes',title:'Current Affairs Jan–Mar 2024 Compilation',meta:'120 pages · Updated monthly · All topics',price:29,stars:'★★★★☆'},
+      {type:'notes',typeLabel:'Notes',title:'Indian Polity — Laxmikanth Summary Notes',meta:'95 pages · Chapter-wise structured',price:39,stars:'★★★★★'},
+      {type:'pyq',typeLabel:'PYQ',title:'UPSC Prelims GS PYQ 2010–2024',meta:'180 pages · With explanations',price:39,stars:'★★★★★'},
+      {type:'notes',typeLabel:'Notes',title:'Indian Geography — Maps & Notes',meta:'70 pages · Physical + Economic geography',price:29,stars:'★★★★☆'},
+      {type:'notes',typeLabel:'Notes',title:'Indian Economy — Budget & Economic Survey',meta:'85 pages · Latest data included',price:39,stars:'★★★★☆'},
+      {type:'mock',typeLabel:'Mock Test',title:'UPSC Prelims Mock Tests (5 Full Tests)',meta:'5 tests · GS1 + CSAT · Detailed solutions',price:59,stars:'★★★★☆'},
+    ],
+    pricing_note:'UPSC material is updated monthly with latest current affairs. School-level pricing applies for basic notes; advanced mains-level content is priced higher.',
+    reviews:[
+      {stars:'★★★★☆',text:'The current affairs compilations are always up to date. Way cheaper than coaching notes!',name:'Manish K.',role:'UPSC CSE Aspirant, Delhi',av:'MK'},
+      {stars:'★★★★★',text:'Laxmikanth summary saved so much revision time. All key points in 95 pages.',name:'Sunita R.',role:'UPSC Prelims Cleared 2024',av:'SR'},
+    ]
+  },
+  sat:{
+    icon:'🇺🇸', title:'SAT & US College Admissions', badge:'International', badgeClass:'badge-int',
+    tagline:'Ace the Digital SAT and get into your dream US university.',
+    stats:[{n:'42+',l:'Documents'},{n:'₹39',l:'Starting/Day'},{n:'4.8★',l:'Avg Rating'},{n:'900+',l:'Students'}],
+    chips:['SAT','ACT','AP Exams','PSAT'],
+    about:{title:'About the SAT',text:'The SAT is a standardized test widely used for US college admissions. The Digital SAT (launched 2024) is adaptive and shorter than the previous version, testing Reading, Writing and Math.',points:['Scored on 400–1600 scale','Digital SAT: 2 hours 14 minutes','Adaptive format — difficulty adjusts per section','Math: Calculator allowed throughout']},
+    syllabus:{title:'Key Topics',items:[{t:'Math — Algebra & Functions',p:90},{t:'Math — Advanced Math & Problem Solving',p:85},{t:'Reading & Writing — Craft & Structure',p:80},{t:'Reading & Writing — Information & Ideas',p:75},{t:'Reading & Writing — Standard English',p:70},{t:'Math — Geometry & Trigonometry',p:65}]},
+    pattern:{title:'Exam Pattern',points:['Total: 1600 points (800 Math + 800 RW)','Reading & Writing: 54 questions · 64 mins','Math: 44 questions · 70 mins','Adaptive: Module 2 difficulty based on Module 1']},
+    tips:{title:'Prep Tips',points:['Practice with official College Board tests','Focus on time management in Math','Build vocabulary through reading widely','Take adaptive practice tests to simulate exam']},
+    materials:[
+      {type:'notes',typeLabel:'Notes',title:'SAT Math — Advanced Topics & Strategies',meta:'74 pages · Digital SAT 2024 format',price:39,stars:'★★★★★'},
+      {type:'pyq',typeLabel:'PYQ',title:'Digital SAT Official Practice Tests (8 Tests)',meta:'Full tests · With detailed answer explanations',price:59,stars:'★★★★★'},
+      {type:'formula',typeLabel:'Formula Sheet',title:'SAT Math Formula & Concept Sheet',meta:'22 pages · Quick reference for all topics',price:29,stars:'★★★★☆'},
+      {type:'notes',typeLabel:'Notes',title:'SAT Reading & Writing — Strategy Guide',meta:'60 pages · Question types + strategies',price:39,stars:'★★★★☆'},
+      {type:'mock',typeLabel:'Mock Test',title:'SAT Adaptive Mock Series (5 Tests)',meta:'Adaptive format · Scored with analysis',price:49,stars:'★★★★★'},
+    ],
+    pricing_note:'SAT material is updated for the 2024 Digital SAT format. Pricing reflects international-quality content.',
+    reviews:[
+      {stars:'★★★★★',text:'Needed SAT prep on a tight budget. Studify had everything for $0.35/day. Scored 1540!',name:'Neha P.',role:'SAT 2024 — 1540/1600',av:'NP'},
+      {stars:'★★★★★',text:'The adaptive mock tests are the best I\'ve found. Really mirrors the actual exam difficulty.',name:'Vikram S.',role:'SAT 2024 — 1520/1600',av:'VS'},
+    ]
+  },
+  gmat:{
+    icon:'🎓', title:'GMAT, GRE & Graduate Admissions', badge:'International', badgeClass:'badge-int',
+    tagline:'Get into your MBA or Master\'s program with the best prep material.',
+    stats:[{n:'38+',l:'Documents'},{n:'₹39',l:'Starting/Day'},{n:'4.7★',l:'Avg Rating'},{n:'620+',l:'Students'}],
+    chips:['GMAT','GRE','TOEFL','IELTS'],
+    about:{title:'About GMAT & GRE',text:'The GMAT Focus Edition is the new format for MBA admissions testing Quantitative Reasoning, Verbal Reasoning and Data Insights. GRE is accepted for both MBA and Master\'s programs globally.',points:['GMAT Focus: 2 hours 15 mins · Scored 205–805','GRE: Verbal + Quant + Analytical Writing','Both accepted at top global business schools','TOEFL/IELTS required for non-native English speakers']},
+    syllabus:{title:'Key Topics',items:[{t:'GMAT — Quantitative Reasoning',p:90},{t:'GMAT — Data Insights (New Section)',p:85},{t:'GMAT — Verbal Reasoning',p:80},{t:'GRE — Analytical Writing',p:75},{t:'IELTS — Academic Reading & Writing',p:80},{t:'TOEFL — Integrated Tasks',p:70}]},
+    pattern:{title:'Exam Pattern',points:['GMAT Focus: 3 sections · 64 questions total','GRE: Verbal (2 sections) + Quant (2 sections) + AW','IELTS: Listening, Reading, Writing, Speaking','TOEFL iBT: 4 sections · ~3 hours']},
+    tips:{title:'Prep Tips',points:['Master Data Sufficiency for GMAT Quant','Practice Integrated Reasoning regularly','For GRE, build vocabulary with frequency lists','IELTS: practice writing task 2 essays daily']},
+    materials:[
+      {type:'notes',typeLabel:'Notes',title:'GMAT Focus Edition — Complete Guide',meta:'110 pages · Quant + Verbal + Data Insights',price:49,stars:'★★★★☆'},
+      {type:'pyq',typeLabel:'PYQ',title:'GMAT Official Practice Questions Bank',meta:'150 pages · All question types explained',price:59,stars:'★★★★★'},
+      {type:'notes',typeLabel:'Notes',title:'GRE Vocabulary — High Frequency 1000 Words',meta:'80 pages · With usage examples',price:39,stars:'★★★★☆'},
+      {type:'mock',typeLabel:'Mock Test',title:'GMAT Focus Mock Tests (4 Full Tests)',meta:'Timed · Scored · Detailed section analysis',price:69,stars:'★★★★★'},
+    ],
+    pricing_note:'Graduate admissions material reflects premium international content quality with expert explanations.',
+    reviews:[
+      {stars:'★★★★★',text:'The GMAT Focus guide was incredibly thorough. Rented for a week and scored 705. Highly recommend!',name:'Rohan A.',role:'GMAT 2024 — 705',av:'RA'},
+    ]
+  },
+  lsat:{
+    icon:'🏫', title:'LSAT & LNAT — Law School Admissions', badge:'International', badgeClass:'badge-int',
+    tagline:'Get into the world\'s best law schools with targeted prep material.',
+    stats:[{n:'25+',l:'Documents'},{n:'₹39',l:'Starting/Day'},{n:'4.6★',l:'Avg Rating'},{n:'380+',l:'Students'}],
+    chips:['LSAT','LNAT'],
+    about:{title:'About LSAT & LNAT',text:'The LSAT is required for US/Canadian law schools while the LNAT is required for UK law schools like Oxford and Cambridge. Both test critical reasoning and analytical skills at a high level.',points:['LSAT: 120–180 score scale','LNAT: MCQ section + Essay section','LSAT: Logical Reasoning, Analytical Reasoning, Reading Comprehension','LNAT: 42 MCQs in 95 mins + 40 min essay']},
+    syllabus:{title:'Key Topics',items:[{t:'Logical Reasoning — Argument Analysis',p:95},{t:'Analytical Reasoning — Logic Games',p:90},{t:'Reading Comprehension — Dense Passages',p:80},{t:'LNAT — Critical Thinking MCQs',p:85},{t:'LNAT — Essay Writing',p:75}]},
+    pattern:{title:'Exam Pattern',points:['LSAT: 4–5 sections · 35 mins each · ~100 questions','LNAT: Section A (42 MCQs, 95 mins) + Section B (Essay, 40 mins)','LSAT is administered digitally via ProctorU','LNAT score sent directly to universities']},
+    tips:{title:'Prep Tips',points:['Logic Games are learnable — practice daily','Time management is critical for LSAT','For LNAT essay, practice structuring arguments quickly','Read complex articles to improve passage comprehension']},
+    materials:[
+      {type:'notes',typeLabel:'Notes',title:'LSAT Logical Reasoning — Full Prep Guide',meta:'85 pages · All question types covered',price:39,stars:'★★★★☆'},
+      {type:'notes',typeLabel:'Notes',title:'LSAT Logic Games — Strategy & Drills',meta:'70 pages · 50+ games with solutions',price:49,stars:'★★★★★'},
+      {type:'pyq',typeLabel:'PYQ',title:'LSAT Official PYQ — 10 PrepTests',meta:'Full tests with explanations',price:59,stars:'★★★★★'},
+      {type:'notes',typeLabel:'Notes',title:'LNAT Complete Prep Guide',meta:'60 pages · MCQ strategies + Essay templates',price:39,stars:'★★★★☆'},
+    ],
+    pricing_note:'LSAT/LNAT material is priced at the international rate due to the specialised content quality.',
+    reviews:[
+      {stars:'★★★★★',text:'The Logic Games strategy guide is incredible. Went from struggling to finishing with time to spare.',name:'Aisha K.',role:'LSAT — Score 172',av:'AK'},
+    ]
+  },
+  imo:{
+    icon:'🔢', title:'Mathematics Olympiads', badge:'Olympiad', badgeClass:'badge-oly',
+    tagline:'From IOQM to IMO — master the mathematics that gets you to the world stage.',
+    stats:[{n:'45+',l:'Documents'},{n:'₹59',l:'Starting/Day'},{n:'4.9★',l:'Avg Rating'},{n:'520+',l:'Students'}],
+    chips:['IOQM','RMO','INMO','IMO','AIME','AMC 8/10/12','HMMT'],
+    about:{title:'About Math Olympiads',text:'The Math Olympiad pathway in India goes: IOQM → RMO → INMO → IMO Training Camp → IMO. The US pathway goes AMC 8/10/12 → AIME → USAMO → IMO. These are the world\'s most prestigious mathematics competitions.',points:['IMO: 6 problems · 9 hours over 2 days','Topics: Algebra, Combinatorics, Geometry, Number Theory','No calculus — pure mathematical thinking','Pre-degree level but extremely challenging']},
+    syllabus:{title:'Key Topics',items:[{t:'Number Theory — Divisibility & Modular Arithmetic',p:90},{t:'Combinatorics — Counting & Bijections',p:85},{t:'Algebra — Inequalities & Polynomials',p:90},{t:'Geometry — Euclidean & Projective',p:80},{t:'Graph Theory & Pigeonhole',p:75},{t:'Functional Equations',p:70}]},
+    pattern:{title:'Exam Pattern',points:['IOQM: 30 questions · MCQ/integer · 3 hours','RMO: 6 problems · 3 hours · Proof-based','INMO: 6 problems · 4 hours · Proof-based','IMO: 3 problems/day · 4.5 hours/day']},
+    tips:{title:'Prep Tips',points:['Master modular arithmetic early','Solve problems, don\'t just read solutions','Keep a notebook of elegant techniques','Read Art of Problem Solving books']},
+    materials:[
+      {type:'notes',typeLabel:'Notes',title:'Number Theory for Math Olympiads',meta:'96 pages · IOQM to IMO level',price:59,stars:'★★★★★'},
+      {type:'pyq',typeLabel:'PYQ',title:'IMO Problems 2000–2024 with Solutions',meta:'180 pages · Full proofs + multiple approaches',price:79,stars:'★★★★★'},
+      {type:'notes',typeLabel:'Notes',title:'Combinatorics — Complete Strategy Guide',meta:'80 pages · INMO & IMO level',price:59,stars:'★★★★★'},
+      {type:'notes',typeLabel:'Notes',title:'Olympiad Geometry — Classical & Modern',meta:'100 pages · Euclidean geometry deep dive',price:59,stars:'★★★★★'},
+      {type:'pyq',typeLabel:'PYQ',title:'IOQM + RMO PYQ 2010–2024',meta:'120 pages · Indian olympiad pathway',price:59,stars:'★★★★★'},
+      {type:'notes',typeLabel:'Notes',title:'Algebra Inequalities — AM-GM to SOS',meta:'65 pages · Olympiad inequality techniques',price:59,stars:'★★★★☆'},
+    ],
+    pricing_note:'Olympiad material is the most advanced content we offer, priced to reflect expert-level curation and depth.',
+    reviews:[
+      {stars:'★★★★★',text:'Used the IOQM number theory notes and made it to INMO. Content is olympiad-specific and incredibly structured.',name:'Siddharth K.',role:'INMO 2024 Qualifier',av:'SK'},
+      {stars:'★★★★★',text:'The IMO problem collection is the best resource I\'ve found outside official books. Multiple solution approaches!',name:'Tanvi R.',role:'RMO 2024 Top 30',av:'TR'},
+    ]
+  },
+  ipho:{
+    icon:'⚡', title:'Physics Olympiads', badge:'Olympiad', badgeClass:'badge-oly',
+    tagline:'From NSEP to IPhO — master physics at the international level.',
+    stats:[{n:'30+',l:'Documents'},{n:'₹59',l:'Starting/Day'},{n:'4.8★',l:'Avg Rating'},{n:'310+',l:'Students'}],
+    chips:['NSEP','INPhO','IPhO','USAPhO'],
+    about:{title:'About Physics Olympiads',text:'The Indian physics olympiad pathway goes NSEP → INPhO → OCSC → IPhO. The IPhO is the International Physics Olympiad with both theoretical and experimental rounds, testing deep conceptual and mathematical understanding.',points:['IPhO: Theoretical (5 hrs) + Experimental (5 hrs)','Topics go well beyond JEE Advanced level','Advanced topics: Special relativity, Quantum basics','India consistently medals at IPhO']},
+    syllabus:{title:'Key Topics',items:[{t:'Classical Mechanics — Lagrangian Methods',p:90},{t:'Electrodynamics — Maxwell\'s Equations',p:85},{t:'Thermodynamics & Statistical Mechanics',p:80},{t:'Optics — Wave & Physical Optics',p:75},{t:'Modern Physics — Quantum & Relativity',p:85},{t:'Experimental Physics Skills',p:80}]},
+    pattern:{title:'Exam Pattern',points:['NSEP: 80 questions MCQ · 2 hours · Objective','INPhO: 8 problems · 3 hours · Subjective','IPhO: Theory (3 problems, 5 hrs) + Experiment (5 hrs)','Scoring: 30 theory + 20 experiment = 50 total']},
+    tips:{title:'Prep Tips',points:['Go beyond JEE — learn Lagrangian mechanics','Study Irodov problems thoroughly','Experimental skills matter at IPhO level','Learn dimensional analysis deeply']},
+    materials:[
+      {type:'notes',typeLabel:'Notes',title:'Classical Mechanics — Beyond JEE Level',meta:'90 pages · Lagrangian + variational methods',price:59,stars:'★★★★★'},
+      {type:'pyq',typeLabel:'PYQ',title:'IPhO Past Problems with Solutions 2015–2024',meta:'180 pages · Theoretical + Experimental',price:79,stars:'★★★★★'},
+      {type:'notes',typeLabel:'Notes',title:'Electrodynamics for Physics Olympiads',meta:'75 pages · Maxwell\'s equations and applications',price:59,stars:'★★★★★'},
+      {type:'pyq',typeLabel:'PYQ',title:'NSEP + INPhO PYQ 2012–2024',meta:'140 pages · India olympiad pathway',price:59,stars:'★★★★★'},
+    ],
+    pricing_note:'Physics olympiad content covers university-level topics at IPhO standard. Priced at the advanced olympiad tier.',
+    reviews:[
+      {stars:'★★★★★',text:'The IPhO past problems are unmatched. Detailed solutions with multiple approaches. Got selected for OCSC!',name:'Dev M.',role:'INPhO 2024 Gold Medalist',av:'DM'},
+    ]
+  },
+  icho:{
+    icon:'🧪', title:'Chemistry Olympiads', badge:'Olympiad', badgeClass:'badge-oly',
+    tagline:'From NSEC to IChO — prep material for every stage of the chemistry pathway.',
+    stats:[{n:'28+',l:'Documents'},{n:'₹59',l:'Starting/Day'},{n:'4.7★',l:'Avg Rating'},{n:'280+',l:'Students'}],
+    chips:['NSEC','INChO','IChO','USNCO'],
+    about:{title:'About Chemistry Olympiads',text:'The IChO is the International Chemistry Olympiad testing theoretical and practical chemistry at university level. India\'s pathway: NSEC → INChO → OCSC → IChO.',points:['IChO: Theoretical (5 hrs) + Practical (5 hrs)','Topics: Organic, Inorganic, Physical, Analytical Chemistry','Goes well beyond JEE Advanced level','Lab skills are critical for IChO']},
+    syllabus:{title:'Key Topics',items:[{t:'Organic Synthesis — Multi-step Routes',p:90},{t:'Physical Chemistry — Thermodynamics & Kinetics',p:85},{t:'Inorganic Chemistry — Coordination Compounds',p:80},{t:'Analytical Chemistry — Spectroscopy',p:75},{t:'Quantum Chemistry Basics',p:70},{t:'Practical & Experimental Chemistry',p:85}]},
+    pattern:{title:'Exam Pattern',points:['NSEC: 80 MCQ · 2 hours','INChO: 8 problems · 3 hours · Subjective','IChO: Theory (5 hrs) + Practical (5 hrs)','Practical involves actual lab experiments']},
+    tips:{title:'Prep Tips',points:['Study reaction mechanisms in depth','Understand spectroscopy (NMR, IR, MS)','Practice naming complex organic molecules','Lab technique matters for IChO practical']},
+    materials:[
+      {type:'notes',typeLabel:'Notes',title:'Organic Chemistry — Advanced Synthesis Notes',meta:'85 pages · Multi-step synthesis + mechanisms',price:59,stars:'★★★★★'},
+      {type:'pyq',typeLabel:'PYQ',title:'IChO Past Problems 2015–2024 with Solutions',meta:'160 pages · Theory + Practical problems',price:79,stars:'★★★★★'},
+      {type:'notes',typeLabel:'Notes',title:'Physical Chemistry — Thermodynamics & Kinetics',meta:'70 pages · University-level treatment',price:59,stars:'★★★★☆'},
+      {type:'pyq',typeLabel:'PYQ',title:'NSEC + INChO PYQ 2012–2024',meta:'130 pages · Indian chemistry olympiad pathway',price:59,stars:'★★★★★'},
+    ],
+    pricing_note:'Chemistry olympiad material covers content well beyond standard exam syllabi. Priced at the advanced tier.',
+    reviews:[
+      {stars:'★★★★★',text:'The organic synthesis notes are exceptional. Multi-step reactions explained so clearly. Got gold at INChO!',name:'Ananya R.',role:'INChO 2024 Gold',av:'AR'},
+    ]
+  },
+  ibo:{
+    icon:'🧬', title:'Biology Olympiads', badge:'Olympiad', badgeClass:'badge-oly',
+    tagline:'Master life sciences at the IBO level — from NSEB to the world stage.',
+    stats:[{n:'24+',l:'Documents'},{n:'₹59',l:'Starting/Day'},{n:'4.7★',l:'Avg Rating'},{n:'220+',l:'Students'}],
+    chips:['NSEB','INBO','IBO','USABO'],
+    about:{title:'About Biology Olympiads',text:'The IBO is the International Biology Olympiad testing theoretical and practical biology. India\'s pathway: NSEB → INBO → OCSC → IBO. Topics go far beyond NEET, covering university-level cell biology, genetics and ecology.',points:['IBO: Theory + Practical experiments','Four areas: Cell Biology, Plant Biology, Animal Biology, Ecology','Practical tests lab skills in real experiments','India has won multiple medals at IBO']},
+    syllabus:{title:'Key Topics',items:[{t:'Cell Biology — Molecular Mechanisms',p:90},{t:'Genetics & Evolution — Advanced',p:85},{t:'Plant Biology — Biochemistry',p:80},{t:'Animal Physiology — Systems',p:85},{t:'Ecology & Environmental Biology',p:75},{t:'Practical & Lab Skills',p:80}]},
+    pattern:{title:'Exam Pattern',points:['NSEB: 80 MCQ · 2 hours · Objective','INBO: Subjective + experimental · 4 hours','IBO: Open/Multiple choice + Practical experiments','Practical involves microscopy, dissection, biochemical tests']},
+    tips:{title:'Prep Tips',points:['Study Campbell Biology systematically','Focus on molecular biology — it\'s heavily tested','Practice diagram drawing for practical','Understand experimental methodology']},
+    materials:[
+      {type:'notes',typeLabel:'Notes',title:'Molecular Cell Biology — Advanced Notes',meta:'90 pages · Cell signalling, division & more',price:59,stars:'★★★★★'},
+      {type:'pyq',typeLabel:'PYQ',title:'IBO Past Problems 2015–2024 with Solutions',meta:'150 pages · Theory + Practical problems',price:69,stars:'★★★★★'},
+      {type:'notes',typeLabel:'Notes',title:'Genetics & Evolution — University Level',meta:'75 pages · Mendelian to molecular genetics',price:59,stars:'★★★★☆'},
+    ],
+    pricing_note:'Biology olympiad content covers university-level life sciences. Priced at the advanced olympiad tier.',
+    reviews:[
+      {stars:'★★★★★',text:'Cell biology notes are better than any textbook chapter I\'ve read. Made it to INBO with these!',name:'Kavya M.',role:'INBO 2024 Qualifier',av:'KM'},
+    ]
+  },
+  cat:{
+    icon:'💼', title:'CAT, XAT & MBA Exams', badge:'Indian', badgeClass:'badge-ind',
+    tagline:'Crack the IIMs and top B-schools with structured, affordable prep.',
+    stats:[{n:'35+',l:'Documents'},{n:'₹29',l:'Starting/Day'},{n:'4.7★',l:'Avg Rating'},{n:'780+',l:'Students'}],
+    chips:['CAT','XAT','SNAP','IIFT','NMAT'],
+    about:{title:'About CAT & MBA Exams',text:'The Common Admission Test (CAT) is India\'s most popular MBA entrance exam, conducted by IIMs. A high percentile (99+) is needed for IIM Ahmedabad, Bangalore and Calcutta. XAT, SNAP and NMAT are taken for XLRI, Symbiosis and NMIMS respectively.',points:['CAT: VARC + DILR + Quant · 2 hours','Sectional time limits with no sectional cutoffs','XAT has a Decision Making section unique to it','All exams are computer-based']},
+    syllabus:{title:'Key Topics',items:[{t:'Quantitative Aptitude — Arithmetic & Algebra',p:90},{t:'VARC — Reading Comprehension',p:85},{t:'DILR — Data Interpretation Sets',p:90},{t:'VARC — Verbal Ability (Para jumbles)',p:80},{t:'DILR — Logical Reasoning Puzzles',p:85},{t:'XAT — Decision Making',p:75}]},
+    pattern:{title:'Exam Pattern',points:['CAT: 66 questions · 120 minutes · 3 sections','VARC: 24 Qs · DILR: 20 Qs · QA: 22 Qs','+3 for correct, −1 for wrong (MCQs)','Non-MCQ questions: no negative marking']},
+    tips:{title:'Prep Tips',points:['Read quality fiction/non-fiction for VARC','Master speed and accuracy in QA','DILR practice requires pattern recognition','Mock analysis is more important than giving mocks']},
+    materials:[
+      {type:'notes',typeLabel:'Notes',title:'CAT Quantitative Aptitude — Complete Notes',meta:'110 pages · All topics with shortcuts',price:39,stars:'★★★★★'},
+      {type:'notes',typeLabel:'Notes',title:'DILR — Strategies & 50 Sets Practice',meta:'90 pages · All set types covered',price:39,stars:'★★★★★'},
+      {type:'pyq',typeLabel:'PYQ',title:'CAT PYQ 2014–2024 with Solutions',meta:'200 pages · All sections · Detailed analysis',price:49,stars:'★★★★★'},
+      {type:'mock',typeLabel:'Mock Test',title:'CAT Full Mock Test Series (6 Tests)',meta:'CAT pattern · Detailed percentile analysis',price:59,stars:'★★★★☆'},
+    ],
+    pricing_note:'MBA exam material uses the standard Indian exam pricing tiers based on content complexity.',
+    reviews:[
+      {stars:'★★★★★',text:'The DILR practice sets are excellent. 50 varied sets covering every type that appears in CAT.',name:'Vikram T.',role:'CAT 2024 — 99.2 percentile',av:'VT'},
+    ]
+  },
+  clat:{
+    icon:'⚖️', title:'CLAT, AILET & Law Exams', badge:'Indian', badgeClass:'badge-ind',
+    tagline:'Get into NLSIU, NLU Delhi and top law schools with targeted prep.',
+    stats:[{n:'22+',l:'Documents'},{n:'₹29',l:'Starting/Day'},{n:'4.6★',l:'Avg Rating'},{n:'420+',l:'Students'}],
+    chips:['CLAT','AILET','SLAT','LSAT India'],
+    about:{title:'About CLAT & AILET',text:'CLAT is the central test for admission to 24 National Law Universities in India. AILET is NLU Delhi\'s own entrance test. Both test comprehension, reasoning, GK and basic mathematics.',points:['CLAT: 120 questions · 2 hours · Passage-based','AILET: 150 questions · 1.5 hours','Sections: English, GK/CA, Legal Reasoning, Logical Reasoning, Maths','No direct definition-based legal knowledge tested']},
+    syllabus:{title:'Key Topics',items:[{t:'Legal Reasoning — Principle & Fact Application',p:90},{t:'Logical Reasoning — Critical Reasoning',p:85},{t:'English — Comprehension & Language',p:80},{t:'Current Affairs & Static GK',p:85},{t:'Elementary Mathematics',p:70}]},
+    pattern:{title:'Exam Pattern',points:['CLAT: 120 MCQ · 120 minutes · 5 sections','Each passage followed by 4–5 questions','+1 for correct, −0.25 for wrong','GK includes legal current affairs']},
+    tips:{title:'Prep Tips',points:['Practice legal principle application daily','Read editorial pages for current affairs','RC speed and comprehension is key','Don\'t ignore Maths — easy marks']},
+    materials:[
+      {type:'notes',typeLabel:'Notes',title:'Legal Reasoning — Principles & Cases',meta:'70 pages · All major legal principles',price:29,stars:'★★★★☆'},
+      {type:'pyq',typeLabel:'PYQ',title:'CLAT PYQ 2014–2024 with Solutions',meta:'160 pages · Passage-based analysis',price:39,stars:'★★★★★'},
+      {type:'notes',typeLabel:'Notes',title:'Current Affairs for CLAT 2024',meta:'80 pages · Legal + General CA',price:29,stars:'★★★★☆'},
+    ],
+    pricing_note:'Law exam material uses standard school/intermediate pricing tiers.',
+    reviews:[
+      {stars:'★★★★☆',text:'Legal reasoning notes gave me a solid foundation. Cleared CLAT with AIR 120!',name:'Ayesha S.',role:'CLAT 2024 — AIR 120',av:'AS'},
+    ]
+  },
+  ssc:{
+    icon:'📋', title:'SSC, Banking & Govt Exams', badge:'Indian', badgeClass:'badge-ind',
+    tagline:'Crack SSC CGL, IBPS PO and other central government exams with targeted material.',
+    stats:[{n:'40+',l:'Documents'},{n:'₹19',l:'Starting/Day'},{n:'4.6★',l:'Avg Rating'},{n:'1,100+',l:'Students'}],
+    chips:['SSC CGL','IBPS PO','RRB NTPC','SBI PO','RBI Grade B'],
+    about:{title:'About SSC & Banking Exams',text:'SSC CGL is conducted by Staff Selection Commission for Group B & C posts. IBPS PO/SBI PO are banking exams for Probationary Officers. These exams test Quantitative Aptitude, Reasoning, English and General Awareness.',points:['SSC CGL: Tier 1 + Tier 2 (CBT) + Tier 3 (Descriptive)','IBPS PO: Prelims + Mains + Interview','All are computer-based multiple choice exams','Negative marking in most sections']},
+    syllabus:{title:'Key Topics',items:[{t:'Quantitative Aptitude — Arithmetic',p:90},{t:'Reasoning — Verbal & Non-verbal',p:85},{t:'English — Grammar & Comprehension',p:80},{t:'General Awareness — Static GK',p:85},{t:'Current Affairs — Monthly Updates',p:80}]},
+    pattern:{title:'Exam Pattern',points:['SSC CGL Tier 1: 100 Qs · 60 mins · 4 sections','IBPS PO Prelims: 100 Qs · 60 mins','Mains exams are longer with descriptive sections','English Descriptive added in mains stage']},
+    tips:{title:'Prep Tips',points:['Learn Vedic Math shortcuts for speed','Practice reasoning puzzles daily','Monthly current affairs are essential','Previous year papers are the best practice']},
+    materials:[
+      {type:'notes',typeLabel:'Notes',title:'Quantitative Aptitude — Shortcut Methods',meta:'95 pages · All arithmetic topics',price:19,stars:'★★★★☆'},
+      {type:'pyq',typeLabel:'PYQ',title:'SSC CGL PYQ 2015–2024 All Tiers',meta:'180 pages · Detailed solutions',price:29,stars:'★★★★★'},
+      {type:'notes',typeLabel:'Notes',title:'Monthly Current Affairs — Feb 2024',meta:'60 pages · Banking + SSC focused',price:19,stars:'★★★★☆'},
+      {type:'mock',typeLabel:'Mock Test',title:'SSC CGL Tier 1 Mock Series (10 Tests)',meta:'Full mock · Speed + Accuracy analysis',price:39,stars:'★★★★☆'},
+    ],
+    pricing_note:'Government exam material is our most affordable content, starting at ₹19/day.',
+    reviews:[
+      {stars:'★★★★☆',text:'The shortcut methods for Quant saved so much time. Cleared SSC CGL Tier 1 in first attempt!',name:'Rahul G.',role:'SSC CGL 2024 — Tier 1 Cleared',av:'RG'},
+    ]
+  },
+  cbse:{
+    icon:'📚', title:'CBSE, ICSE & Board Exams', badge:'School', badgeClass:'badge-sch',
+    tagline:'Score 95+ in your board exams with chapter-wise notes and sample papers.',
+    stats:[{n:'50+',l:'Documents'},{n:'₹19',l:'Starting/Day'},{n:'4.7★',l:'Avg Rating'},{n:'2,100+',l:'Students'}],
+    chips:['CBSE Class 10','CBSE Class 12','ICSE','ISC','State Boards'],
+    about:{title:'About Board Exams',text:'CBSE Class 10 and 12 board exams are the most taken exams in India. Class 12 marks are critical for college admissions. ICSE/ISC is the alternative board known for its detailed syllabus and high standards.',points:['CBSE Class 10: 5 main subjects','CBSE Class 12: Science/Commerce/Humanities streams','NCERT is the primary source for CBSE','ICSE has more detailed English and science syllabus']},
+    syllabus:{title:'Key Topics (Class 12 Science)',items:[{t:'Physics — Electrostatics & Magnetism',p:85},{t:'Chemistry — Organic Chemistry',p:90},{t:'Mathematics — Calculus & Algebra',p:85},{t:'Biology — Genetics & Ecology',p:80},{t:'English — Literature & Writing',p:75}]},
+    pattern:{title:'Exam Pattern',points:['CBSE Class 12: Theory (70 marks) + Practical (30 marks)','Mix of MCQ, short answer and long answer','Internal assessment carries significant marks','3 hours per paper']},
+    tips:{title:'Prep Tips',points:['NCERT first, always','Practice CBSE sample papers from official site','Focus on diagrams in Biology and Physics','Previous year papers reveal question patterns']},
+    materials:[
+      {type:'notes',typeLabel:'Notes',title:'CBSE Class 12 Physics — Chapter Notes',meta:'100 pages · All NCERT chapters covered',price:19,stars:'★★★★☆'},
+      {type:'notes',typeLabel:'Notes',title:'CBSE Class 12 Chemistry — Complete Notes',meta:'110 pages · Organic + Inorganic + Physical',price:19,stars:'★★★★★'},
+      {type:'pyq',typeLabel:'PYQ',title:'CBSE Class 12 PYQ 2016–2024 All Subjects',meta:'200 pages · Board exam pattern',price:29,stars:'★★★★★'},
+      {type:'notes',typeLabel:'Notes',title:'CBSE Class 10 — Science & Maths Notes',meta:'90 pages · All chapters',price:19,stars:'★★★★☆'},
+    ],
+    pricing_note:'Board exam material is our most affordable content — school-level pricing starting at just ₹19/day.',
+    reviews:[
+      {stars:'★★★★★',text:'Scored 96% in CBSE Class 12! The chapter notes covered everything from NCERT perfectly.',name:'Ishita S.',role:'CBSE Class 12 — 96%',av:'IS'},
+    ]
+  },
+  sof:{
+    icon:'🌟', title:'School-Level Olympiads (SOF & More)', badge:'School', badgeClass:'badge-sch',
+    tagline:'Build a strong foundation early — prep for SOF, Silverzone and school olympiads.',
+    stats:[{n:'20+',l:'Documents'},{n:'₹19',l:'Starting/Day'},{n:'4.6★',l:'Avg Rating'},{n:'650+',l:'Students'}],
+    chips:['IMO (SOF)','NSO','IEO','IGKO','NCO'],
+    about:{title:'About School Olympiads',text:'School olympiads like SOF IMO, NSO and IEO are conducted nationally for Classes 1–12 and help build conceptual clarity early. They are also great foundations for students who want to pursue higher olympiads like IOQM.',points:['Classes 1–12 can participate','Individual level then school/city/national levels','Certificates, medals and scholarships awarded','Great for class 6–10 olympiad foundation building']},
+    syllabus:{title:'Key Topics',items:[{t:'Mathematics — Number Systems & Algebra',p:85},{t:'Science — Physics, Chemistry, Biology',p:80},{t:'English — Grammar & Comprehension',p:75},{t:'General Knowledge & Current Affairs',p:70},{t:'Computer Science — IT & Logical Thinking',p:75}]},
+    pattern:{title:'Exam Pattern',points:['Multiple choice questions · 60 minutes','Section A: Logical Reasoning · Section B: Subject Content','Section C: Achievers Section (Higher difficulty)','Conducted in school premises']},
+    tips:{title:'Prep Tips',points:['NCERT is the base — cover it completely','Achievers section requires lateral thinking','Practice with previous year SOF papers','Work on speed — time management matters']},
+    materials:[
+      {type:'notes',typeLabel:'Notes',title:'SOF IMO — Class 8 Math Prep Guide',meta:'55 pages · All olympiad-level topics',price:19,stars:'★★★★☆'},
+      {type:'pyq',typeLabel:'PYQ',title:'SOF IMO + NSO PYQ Pack (Classes 6–10)',meta:'120 pages · 5 years of papers with solutions',price:29,stars:'★★★★★'},
+      {type:'notes',typeLabel:'Notes',title:'NSO Science Olympiad — Class 9 Notes',meta:'60 pages · Physics, Chemistry, Biology',price:19,stars:'★★★★☆'},
+    ],
+    pricing_note:'School olympiad material is priced at our lowest school-level tier, starting at ₹19/day.',
+    reviews:[
+      {stars:'★★★★☆',text:'My son got a gold medal in NSO Class 8 after using these prep notes. Very thorough!',name:'Sunita P.',role:'Parent — SOF NSO Gold Medalist',av:'SP'},
+    ]
+  },
+  ioaa:{
+    icon:'🌌', title:'Astronomy & Earth Science Olympiads', badge:'Olympiad', badgeClass:'badge-oly',
+    tagline:'Explore the cosmos and earth sciences — prep for IOAA, IESO and more.',
+    stats:[{n:'18+',l:'Documents'},{n:'₹59',l:'Starting/Day'},{n:'4.7★',l:'Avg Rating'},{n:'180+',l:'Students'}],
+    chips:['IOAA','IAO','IESO','NSEA'],
+    about:{title:'About Astronomy Olympiads',text:'The IOAA (International Olympiad on Astronomy and Astrophysics) and IESO (International Earth Science Olympiad) are prestigious competitions requiring deep knowledge in astrophysics, observational astronomy, and earth sciences.',points:['IOAA: Theory + Observational + Data Analysis rounds','NSEA → INAO → OCSC → IOAA for India','IESO: Earth sciences — geology, oceanography, meteorology','Both involve practical observational tasks']},
+    syllabus:{title:'Key Topics',items:[{t:'Astrophysics — Stellar & Galactic Physics',p:90},{t:'Celestial Mechanics & Orbital Dynamics',p:85},{t:'Observational Astronomy & Coordinate Systems',p:80},{t:'Cosmology & Big Bang Theory',p:75},{t:'Earth Sciences — Geology & Geophysics',p:80},{t:'Data Analysis & Problem Solving',p:85}]},
+    pattern:{title:'Exam Pattern',points:['IOAA: Theory (5hrs) + Observational (5hrs) + Data Analysis (5hrs)','NSEA: 80 MCQ · 2 hours · Objective','INAO: Subjective problems · 4 hours','IESO: Theory + Field investigation + Data analysis']},
+    tips:{title:'Prep Tips',points:['Learn coordinate systems (RA, Dec, Alt-Az)','Study stellar evolution thoroughly','Practice data analysis with real datasets','Learn to use a star atlas and planisphere']},
+    materials:[
+      {type:'notes',typeLabel:'Notes',title:'Astrophysics — Stellar Physics & Cosmology',meta:'85 pages · IOAA level treatment',price:59,stars:'★★★★★'},
+      {type:'pyq',typeLabel:'PYQ',title:'IOAA Past Problems 2015–2024',meta:'140 pages · Theory + Data Analysis',price:69,stars:'★★★★★'},
+      {type:'notes',typeLabel:'Notes',title:'Celestial Mechanics & Coordinate Systems',meta:'60 pages · Observational astronomy essentials',price:59,stars:'★★★★☆'},
+    ],
+    pricing_note:'Astronomy olympiad content is advanced university-level astrophysics. Priced at the olympiad advanced tier.',
+    reviews:[
+      {stars:'★★★★★',text:'Best resource for NSEA prep. The stellar physics notes are outstanding.',name:'Nakul S.',role:'INAO 2024 Qualifier',av:'NS'},
+    ]
+  },
+  ioi:{
+    icon:'💻', title:'Informatics & AI Olympiads', badge:'Olympiad', badgeClass:'badge-oly',
+    tagline:'Master competitive programming and algorithms — from ZCO to IOI.',
+    stats:[{n:'20+',l:'Documents'},{n:'₹59',l:'Starting/Day'},{n:'4.8★',l:'Avg Rating'},{n:'240+',l:'Students'}],
+    chips:['IOI','IOAI','USACO','ZCO','INOI'],
+    about:{title:'About Informatics Olympiads',text:'The IOI (International Olympiad in Informatics) is the world\'s most prestigious programming competition. India\'s pathway: ZCO → INOI → IOITC → IOI. IOAI (International Olympiad on Artificial Intelligence) is a newer olympiad testing AI/ML fundamentals.',points:['IOI: 2 days × 5 hours · Algorithmic problem solving','Languages allowed: C++, Java, Pascal','ZCO → INOI → IOITC → IOI for India','IOAI tests AI concepts and practical problem solving']},
+    syllabus:{title:'Key Topics',items:[{t:'Data Structures — Trees, Graphs, Segment Trees',p:90},{t:'Dynamic Programming — All paradigms',p:95},{t:'Graph Algorithms — BFS, DFS, Shortest Paths',p:90},{t:'Sorting & Searching — Advanced',p:80},{t:'Number Theory & Combinatorics for CP',p:75},{t:'AI/ML Fundamentals for IOAI',p:80}]},
+    pattern:{title:'Exam Pattern',points:['IOI: 3 problems/day · 5 hours · Partial scoring','ZCO: Online · 3 hours · 2 problems','INOI: Offline · 3 hours · 2-3 problems','USACO: 4 divisions (Bronze to Platinum)']},
+    tips:{title:'Prep Tips',points:['Practice daily on Codeforces / AtCoder','Learn C++ STL thoroughly','Master DP before attempting advanced problems','Solve USACO problems for structured progression']},
+    materials:[
+      {type:'notes',typeLabel:'Notes',title:'Dynamic Programming — Complete Guide',meta:'100 pages · Classic to advanced DP',price:59,stars:'★★★★★'},
+      {type:'notes',typeLabel:'Notes',title:'Graph Theory for Competitive Programming',meta:'80 pages · BFS to advanced graph algorithms',price:59,stars:'★★★★★'},
+      {type:'pyq',typeLabel:'PYQ',title:'IOI Problems 2015–2024 with Solutions',meta:'160 pages · Full solutions in C++',price:79,stars:'★★★★★'},
+      {type:'notes',typeLabel:'Notes',title:'IOAI — AI Fundamentals & Problem Solving',meta:'70 pages · ML basics + Problem approaches',price:59,stars:'★★★★☆'},
+    ],
+    pricing_note:'Informatics olympiad material covers advanced CS algorithms at IOI/IOAI level. Priced at the advanced olympiad tier.',
+    reviews:[
+      {stars:'★★★★★',text:'The DP guide is exceptional. Went from struggling with DP to clearing INOI in 3 months.',name:'Aditya V.',role:'INOI 2024 Qualifier',av:'AV'},
+    ]
+  },
+  ijso:{
+    icon:'🏆', title:'Junior & Multi-Science Olympiads', badge:'Olympiad', badgeClass:'badge-oly',
+    tagline:'Prep for IJSO, IOL, IPO and all other international olympiads.',
+    stats:[{n:'22+',l:'Documents'},{n:'₹49',l:'Starting/Day'},{n:'4.6★',l:'Avg Rating'},{n:'190+',l:'Students'}],
+    chips:['IJSO','IOL','IEO','iGeo','IPO','WPhO'],
+    about:{title:'About Junior & Other Olympiads',text:'The IJSO (International Junior Science Olympiad) is for students under 16 covering Physics, Chemistry and Biology. IOL covers linguistics, IPO covers philosophy, and iGeo covers geography.',points:['IJSO: Physics + Chemistry + Biology combined','IOL: Linguistics puzzles — no prior language knowledge needed','IPO: Philosophy essays and argumentation','iGeo: Physical and human geography fieldwork']},
+    syllabus:{title:'Key Topics',items:[{t:'IJSO — Integrated Science (Physics+Chem+Bio)',p:85},{t:'IOL — Linguistic Pattern Recognition',p:80},{t:'iGeo — Physical & Human Geography',p:75},{t:'IPO — Philosophical Argumentation',p:70},{t:'WPhO — Physics Problem Solving',p:80}]},
+    pattern:{title:'Exam Pattern',points:['IJSO: Theory + Practical · 2 days','IOL: 5 problems · 4 hours · No prior language knowledge','iGeo: Written + Field + Multimedia','IPO: Open and semi-open problems on philosophy']},
+    tips:{title:'Prep Tips',points:['IJSO: Study all 3 sciences at olympiad depth','IOL: Practice with past problems — approach is learnable','iGeo: Focus on both physical and economic geography','IPO: Read philosophy introductions and practice structured arguments']},
+    materials:[
+      {type:'pyq',typeLabel:'PYQ',title:'IJSO Past Problems 2010–2024 with Solutions',meta:'140 pages · Theory + Practical',price:49,stars:'★★★★★'},
+      {type:'notes',typeLabel:'Notes',title:'IOL — Introduction to Linguistics & Problem Solving',meta:'65 pages · Past problem approaches + techniques',price:49,stars:'★★★★☆'},
+      {type:'notes',typeLabel:'Notes',title:'iGeo — Complete Geography Prep Guide',meta:'80 pages · Physical + Human geography',price:49,stars:'★★★★☆'},
+    ],
+    pricing_note:'Junior and multi-category olympiad material is priced at an intermediate tier between school and advanced olympiad content.',
+    reviews:[
+      {stars:'★★★★★',text:'The IJSO problems booklet is amazing. Full solutions with explanations across all 3 sciences.',name:'Pooja K.',role:'IJSO 2024 Silver Medalist',av:'PK'},
+    ]
+  }
+};
+
+// pricing config
+const PRICE_TIERS = {
+  school:{day:19,week:79,month:99,bundle:149},
+  intermediate:{day:29,week:99,month:149,bundle:199},
+  advanced:{day:39,week:129,month:199,bundle:249},
+  olympiad:{day:59,week:179,month:249,bundle:349}
+};
+
+function getTier(id){
+  if(['cbse','sof'].includes(id)) return 'school';
+  if(['ssc','clat'].includes(id)) return 'intermediate';
+  if(['jee','neet','upsc','cat','sat','gmat','lsat'].includes(id)) return 'advanced';
+  return 'olympiad';
+}
+
+// ── NAVIGATION ──
+function showHome(){
+  document.getElementById('homePage').classList.add('active');
+  document.getElementById('examPage').classList.remove('active');
+  window.scrollTo(0,0);
+}
+
+function openExam(id){
+  const e = EXAMS[id];
+  if(!e) return;
+  const tier = getTier(id);
+  const prices = PRICE_TIERS[tier];
+
+  // set header
+  document.getElementById('examIcon').textContent = e.icon;
+  document.getElementById('examTitle').textContent = e.title;
+  document.getElementById('examTagline').textContent = e.tagline;
+
+  // chips
+  document.getElementById('examChips').innerHTML = e.chips.map(c=>
+    `<span class="exam-chip-big ${e.badgeClass}" style="border-color:rgba(255,255,255,0.15);color:var(--muted2)">${c}</span>`
+  ).join('');
+
+  // stats
+  document.getElementById('examStats').innerHTML = e.stats.map(s=>
+    `<div class="exam-stat"><div class="exam-stat-n grad">${s.n}</div><div class="exam-stat-l">${s.l}</div></div>`
+  ).join('');
+
+  // about
+  document.getElementById('examAbout').innerHTML = `
+    <h3>${e.about.title}</h3><p>${e.about.text}</p>
+    <ul>${e.about.points.map(p=>`<li>${p}</li>`).join('')}</ul>`;
+
+  // syllabus
+  document.getElementById('examSyllabus').innerHTML = `
+    <h3>${e.syllabus.title}</h3>
+    ${e.syllabus.items.map(i=>`
+      <div class="syllabus-item">
+        <div><div>${i.t}</div><div class="syl-bar" style="width:${i.p}%"></div></div>
+      </div>`).join('')}`;
+
+  // pattern
+  document.getElementById('examPattern').innerHTML = `
+    <h3>${e.pattern.title}</h3><ul>${e.pattern.points.map(p=>`<li>${p}</li>`).join('')}</ul>`;
+
+  // tips
+  document.getElementById('examTips').innerHTML = `
+    <h3>${e.tips.title}</h3><ul>${e.tips.points.map(p=>`<li>${p}</li>`).join('')}</ul>`;
+
+  // materials
+  const types=[...new Set(e.materials.map(m=>m.type))];
+  document.getElementById('matFilters').innerHTML =
+    `<div class="mat-filter active" onclick="filterMats('all',this)">All</div>` +
+    types.map(t=>`<div class="mat-filter" onclick="filterMats('${t}',this)">${capitalize(t)}</div>`).join('');
+  document.getElementById('matGrid').innerHTML = e.materials.map(m=>`
+    <div class="mat-card" data-mtype="${m.type}">
+      <div class="mat-card-top">
+        <span class="mat-type mat-type-${m.type}">${m.typeLabel}</span>
+        <span style="color:var(--gold);font-size:0.75rem">${m.stars}</span>
+      </div>
+      <div class="mat-title">${m.title}</div>
+      <div class="mat-meta">${m.meta}</div>
+      <div class="mat-footer">
+        <div class="mat-price">₹${m.price} <small>/ day</small></div>
+        <button class="mat-rent-btn" onclick="rentDoc(this)">Rent Now</button>
+      </div>
+    </div>`).join('');
+
+  // pricing
+  document.getElementById('examPricingCards').innerHTML = `
+    <div class="ep-card">
+      <div class="ep-name">Day Pass</div>
+      <div class="ep-price"><sup>₹</sup>${prices.day}</div>
+      <div class="ep-per">per document · 24 hours</div>
+      <ul class="ep-list"><li>1 document for 24 hours</li><li>View on any device</li><li>No downloads</li><li>Instant access</li></ul>
+      <button class="btn-ghost" style="width:100%;justify-content:center" onclick="showToast('🎉 Redirecting to checkout!')">Get Access</button>
+    </div>
+    <div class="ep-card pop">
+      <div class="ep-pop">⭐ Best Value</div>
+      <div class="ep-name">Week Pass</div>
+      <div class="ep-price"><sup>₹</sup>${prices.week}</div>
+      <div class="ep-per">per document · 7 days</div>
+      <ul class="ep-list"><li>1 document for 7 days</li><li>View on any device</li><li>No downloads</li><li>Bookmark & highlight</li><li>Priority support</li></ul>
+      <button class="btn-grad" style="width:100%;justify-content:center" onclick="showToast('🎉 Redirecting to checkout!')">Get Access</button>
+    </div>
+    <div class="ep-card">
+      <div class="ep-name">Monthly</div>
+      <div class="ep-price"><sup>₹</sup>${prices.month}</div>
+      <div class="ep-per">all ${e.title.split('—')[0].trim()} docs · 30 days</div>
+      <ul class="ep-list"><li>All documents in this category</li><li>30 days unlimited viewing</li><li>No downloads</li><li>Bookmark & highlight</li><li>Priority support</li></ul>
+      <button class="btn-ghost" style="width:100%;justify-content:center" onclick="showToast('🎉 Redirecting to checkout!')">Get Access</button>
+    </div>
+    <div class="ep-card">
+      <div class="ep-name">Bundle (5 Docs)</div>
+      <div class="ep-price"><sup>₹</sup>${prices.bundle}</div>
+      <div class="ep-per">any 5 documents · 7 days</div>
+      <ul class="ep-list"><li>Pick any 5 documents</li><li>7 days full access</li><li>No downloads</li><li>Priority support</li></ul>
+      <button class="btn-ghost" style="width:100%;justify-content:center" onclick="showToast('🎉 Redirecting to checkout!')">Get Access</button>
+    </div>`;
+
+  document.getElementById('examPricingNote').innerHTML = `
+    <h3>💡 Pricing Note</h3><p>${e.pricing_note}</p>`;
+
+  // reviews
+  document.getElementById('examReviews').innerHTML = e.reviews.map(r=>`
+    <div class="testi-card">
+      <div class="testi-stars">${r.stars}</div>
+      <div class="testi-q">"</div>
+      <div class="testi-text">${r.text}</div>
+      <div class="testi-person">
+        <div class="testi-av">${r.av}</div>
+        <div><div class="testi-nm">${r.name}</div><div class="testi-rl">${r.role}</div></div>
+      </div>
+    </div>`).join('');
+
+  // reset tabs
+  document.querySelectorAll('.exam-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.exam-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelector('.exam-tab').classList.add('active');
+  document.getElementById('ep-overview').classList.add('active');
+
+  document.getElementById('homePage').classList.remove('active');
+  document.getElementById('examPage').classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// ── TABS & FILTERS ──
+function switchExamTab(id, el){
+  document.querySelectorAll('.exam-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.exam-panel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('ep-'+id).classList.add('active');
+}
+
+function filterCats(type,el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.cat-card').forEach(c=>{
+    c.style.display=(type==='all'||c.dataset.type===type)?'':'none';
+  });
+}
+
+function filterMats(type,el){
+  document.querySelectorAll('.mat-filter').forEach(f=>f.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.mat-card').forEach(c=>{
+    c.style.display=(type==='all'||c.dataset.mtype===type)?'':'none';
+  });
+}
+
+// ── HELPERS ──
+function rentDoc(btn){
+  btn.textContent='✓ Added!';
+  btn.style.background='linear-gradient(135deg,#10b981,#059669)';
+  setTimeout(()=>{btn.textContent='Rent Now';btn.style.background=''},2000);
+  showToast('📄 Added to cart!');
+}
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+function capitalize(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+
+function scrollTo(id){
+  setTimeout(()=>{
+    const el=document.querySelector(id);
+    if(el)el.scrollIntoView({behavior:'smooth'});
+  },100);
+}
+
+// Reveal on scroll
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')})},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+</script>
+
+
+</body></html>
